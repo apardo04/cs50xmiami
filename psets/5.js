@@ -11,5 +11,18 @@ For example:
 */
 
 function drEvil(amount) {
-  // write your solution here...
+  if (amount == 1000000)
+  {
+    return "$" + amount + " dollars (pinky)"
+  }
+  else
+  {
+    return "$" + amount;
+  }
 }
+
+var ans = drEvil(1000000);
+console.log(ans);
+
+var ans2 = drEvil(1);
+console.log(ans2);
