@@ -10,3 +10,10 @@ http://math2.org/math/geometry/circles.htm
 */
 
 // write your solution here...
+var r = 3;
+var diameter = 2 * r;
+var circ = Math.PI * diameter;
+var area = Math.PI * (r*r);
+
+console.log("The circumference is " + circ + ".");
+console.log("The area is " + area + ".");
