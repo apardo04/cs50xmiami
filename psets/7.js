@@ -11,8 +11,6 @@ For example:
 fixStart('babble'): 'ba**le'
 */
 
-//still not working!!!!----!!!--!-!_!_!_
-
 function fixStart(s) {
   /*var char = s.charAt(0);
   var s2 = char;
