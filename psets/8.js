@@ -15,7 +15,22 @@ For example:
   verbing('go'): 'go'
 
 */
-
 function verbing(word) {
-  // write your solution here...
+  var len = word.length;
+  //var pop = word.split("_").pop();
+  if (len < 3) {
+    return word;
+  }
+  else if (len > 2) {
+    if (word.substr(len - 3) == "ing") {
+      return word + "ly";
+    }
+    else {
+      return word + "ing";
+    }
+  }
 }
+
+var string = "swimming";
+var verbed = verbing(string);
+console.log(verbed);
