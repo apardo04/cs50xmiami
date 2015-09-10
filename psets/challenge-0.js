@@ -29,21 +29,24 @@ Write a function that will take one argument (a number) and perform the followin
 // write your solution here...
 function squareNumber(number) {
   var result = number * number;
-  return "The result of squaring the number " + number + " is " + result;
+  //return "The result of squaring the number " + number + " is " + result;
+  return result;
 }
 
 console.log(squareNumber(3));
 
 function halfNumber(number) {
   var result = number / 2;
-  return "Half of " + number + " is " + result;
+  //return "Half of " + number + " is " + result;
+  return result;
 }
 
 console.log(halfNumber(3));
 
 function percentOf(number, percent) {
   var result = number * (100 / percent);
-  return number + " is " + percent + "% of " + result;
+  //return number + " is " + percent + "% of " + result;
+  return result;
 }
 
 console.log(percentOf(2, 50));
@@ -51,10 +54,12 @@ console.log(percentOf(2, 50));
 function areaOfCircle(radius) {
   var result = Math.PI * (radius * radius);
   result = Math.floor(result * 100) / 100
-  return "The area for a circle with radius " + radius + " is " + result;
+  //return "The area for a circle with radius " + radius + " is " + result;
+  return result;
 }
 
 console.log(areaOfCircle(2));
+
 //need to fix this
 function calculate(number) {
   var half = halfNumber(number);
