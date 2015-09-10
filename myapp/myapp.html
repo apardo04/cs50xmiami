@@ -1,0 +1,30 @@
+<head>
+  <title>myapp</title>
+</head>
+
+<body>
+  <!--
+  <h1>Welcome to My Meteor Webpage!</h1>
+  <form id="register-form" action="action">
+  <div>
+   <input type="email" id="account-email" />
+   <input type="password" id="account-password" />
+   <input type="submit" id="create-account" value="Create an Account" />
+ </div>
+</form>
+  <form id="login-form" action="action">
+    <div>
+      <input type="email" id="login-email" placeholder="Username" />
+      <input type="password" id="login-password" />
+      <input type="submit" id="login-button" value="Sign in" />
+    </div>
+  </form>
+-->
+{{> loginButtons}}
+  {{> hello}}
+</body>
+
+<template name="hello">
+  <button>Click Me</button>
+  <p>You've pressed the button {{counter}} times.</p>
+</template>

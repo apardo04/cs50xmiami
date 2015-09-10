@@ -13,8 +13,20 @@ For example:
   notBad('This movie is not so bad!'): 'This movie is good!'
   notBad('This dinner is bad!'): 'This dinner is bad!'
 
+-----------NOT DONE
 */
 
 function notBad(sentence) {
-  // write your solution here...
+  var not = new RegExp("not");
+  var bad = new RegExp("bad");
+  if (not.test(sentence) && bad.test(sentence)) {
+    return sentence.substring(0).replace(RegExp("not", 'gi'), "good");
+  }
+  else {
+    return sentence;
+  }
 }
+
+var sentence = "This dinner is not so bad!"
+
+console.log(notBad(sentence));

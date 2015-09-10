@@ -12,6 +12,7 @@ fixStart('babble'): 'ba**le'
 */
 
 function fixStart(s) {
+  return s[0]+s.substring(1).replace(RegExp(s[0],'gi'),"*");
   /*var char = s.charAt(0);
   var s2 = char;
   for (var i = 1; i < s.length; i++) {
@@ -23,9 +24,8 @@ function fixStart(s) {
     }
   }
   return s2;*/
-  return s[0]+s.substring(1).replace(RegExp(s[0],'g'),"*");
 }
 
-var word = "babble";
+var word = "baBble";
 var fix = fixStart(word);
 console.log(fix);
