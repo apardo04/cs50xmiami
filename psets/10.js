@@ -10,3 +10,10 @@ Write a function named tellFortune that:
 */
 
 // write your solution here...
+function tellFortune(kids, partner, geo, job){
+  return "You will be a " + job + " in " + geo + ", and married to " + partner + " with " + kids + " kids.";
+}
+
+console.log(tellFortune(2, "mileini", "miami", "programmer"));
+console.log(tellFortune(20, "some chick", "SF", "programmer"));
+console.log(tellFortune(0, "idk", "miami", "programmer"));

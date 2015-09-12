@@ -1,0 +1,39 @@
+body {
+  padding-top: 50px
+}
+.starter-template {
+  padding: 40px 15px;
+  text-align: center;
+}
+
+#chat {
+  background: skyblue;
+  min-height: 300px;
+}
+.navbar-inverse {
+    background-color: #FFF;
+    border-color: #FFFFFF;
+}
+
+.sidebar {
+    position: fixed;
+    top: 51px;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    display: block;
+    padding: 20px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: #4D394B;
+    border-right: 1px solid #eee;
+    width: 220px;
+}
+.navbar-header {
+    width: 204px;
+    background-color: #4D394B;
+    border-color: #4D394B;
+}
+.navbar-brand {
+    background-color: #4D394B;
+}
