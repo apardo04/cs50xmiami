@@ -10,3 +10,19 @@ and log the output to make sure it works (e.g. "The greater number of 5 and 10 i
 */
 
 // write your solution here...
+function greaterNum(num1, num2) {
+  if (num1 > num2) {
+    return num1;
+  }
+  else if (num2 > num1) {
+    return num2;
+  }
+  else {
+    return "none, they're the same."
+  }
+}
+
+var num1 = 5;
+var num2 = 10;
+
+console.log("The greater number of " + num1 + " and " + num2 + " is " + greaterNum(num1,num2));
