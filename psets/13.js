@@ -14,3 +14,15 @@ Create a function called calcArea:
 */
 
 // write your solution here...
+function calcCircumfrence(r) {
+  return (2 * r) * Math.PI;
+
+}
+
+function calcArea(r) {
+  return Math.PI * (r*r);
+}
+
+console.log("The circumference is " + calcCircumfrence(3) + ".");
+
+console.log("The area is " + calcArea(3) + ".");

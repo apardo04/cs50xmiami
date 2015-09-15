@@ -12,3 +12,16 @@ Write a function named calculateSupply that:
 */
 
 // write your solution here...
+function calculateSupply (age, amount) {
+  var result = (90 - age) * Math.round(amount);
+  return result;
+}
+
+var results = calculateSupply(24, 3.5);
+console.log("You will need " + results + " to last you until the ripe old age of " + 90);
+
+var results = calculateSupply(89, 100);
+console.log("You will need " + results + " to last you until the ripe old age of " + 90);
+
+var results = calculateSupply(12, 3.14);
+console.log("You will need " + results + " to last you until the ripe old age of " + 90);
