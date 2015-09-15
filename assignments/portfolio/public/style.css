@@ -5,16 +5,23 @@ body {
   padding: 40px 15px;
   text-align: center;
 }
-
-#chat {
-  background: skyblue;
-  min-height: 300px;
+.navbar-header {
+    width: 204px;
+    background-color: #4D394B;
+    border-color: #4D394B;
+}
+.navbar-brand {
+    background-color: #4D394B;
+    color: white;
+    font-family: Lato;
 }
 .navbar-inverse {
-    background-color: #FFF;
+    background-color: #FFFFFF;
     border-color: #FFFFFF;
 }
-
+.navbar-inverse .navbar-brand {
+    color: #FFFFFF;
+}
 .sidebar {
     position: fixed;
     top: 51px;
@@ -29,11 +36,30 @@ body {
     border-right: 1px solid #eee;
     width: 220px;
 }
-.navbar-header {
-    width: 204px;
-    background-color: #4D394B;
-    border-color: #4D394B;
+a {
+    color: #ab9ba9;
+    text-decoration: none;
 }
-.navbar-brand {
-    background-color: #4D394B;
+#chat {
+    min-height: 38px;
+    position: relative;
+    bottom: -550px;
+    width: 100%;
+    border-color: black;
+    left: -10px;
+}
+.form-control {
+    padding: 2px 2rem;
+    font-size: 15px;
+    height: 2.9rem;
+    border-radius: 40px;
+    background: #FFF;
+    border: 1px solid rgba(214,214,214,.61);
+}
+.input-group-addon:first-child {
+    border: 0;
+    background-color: transparent;
+    width: 0px;
+    bottom: 14px;
+    position: absolute;
 }
