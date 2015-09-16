@@ -25,4 +25,4 @@ function calcArea(r) {
 
 console.log("The circumference is " + calcCircumfrence(3) + ".");
 
-console.log("The area is " + calcArea(3) + ".");
+console.log("The area is " + calcArea(5) + ".");
