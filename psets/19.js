@@ -9,3 +9,8 @@ Write a for loop that will iterate from 0 to 10.
 */
 
 // write your solution here...
+for (var i = 0; i < 11; i++) {
+  for (var j = 1; j < 11; j++) {
+    console.log(i + " * " + j + " = " + i * j);
+  }
+}
