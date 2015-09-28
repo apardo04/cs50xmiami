@@ -1,14 +1,3 @@
-if (Meteor.isClient) {
-  // This code only runs on the client
-  Template.body.helpers({
-    tasks: [
-      { text: "This is task 1" },
-      { text: "This is task 2" },
-      { text: "This is task 3" }
-    ]
-  });
-}
-
 Tasks = new Mongo.Collection("tasks");
 
 if (Meteor.isClient) {
@@ -34,6 +23,8 @@ if (Meteor.isClient) {
 
     // Clear form
     event.target.text.value = "";
+
+    return false;
   }
 });
 // This code only runs on the client
