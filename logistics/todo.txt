@@ -1,0 +1,4 @@
+1. Global header/footer
+2. contact.html
+3. about.html .box same size
+4. Make transparent logo
