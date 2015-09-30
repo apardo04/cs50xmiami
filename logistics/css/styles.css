@@ -35,7 +35,7 @@ img {
 	text-transform: uppercase;
 }
 /*------------------------------ Sprites ------------------------------*/
-#navigation, #navigation li.selected a, #navigation li a:hover, .blog h2, .frame, .heading1, .heading2, #blog .list li {
+#navigation, #navigation li.selected a, #navigation li a:hover, .blog h2, .frame, .heading1, .heading2, #services .list li {
 	background: url(../images/interface.png) no-repeat;
 }
 .box, .box > div, .box > div > div {
@@ -103,7 +103,7 @@ img {
 	text-align: center;
 }
 #navigation li a {
-	color: #5a4d43;
+	color: #000000;
 	display: block;
 	font: 14px/50px Arial, Helvetica, sans-serif;
 	height: 50px;
@@ -159,8 +159,10 @@ p a:hover {
 }
 /** adbox **/
 #adbox {
-	background: url(../images/adbox.jpg) no-repeat center top;
+	background: url(../images/indexpic.jpg) no-repeat center top;
 	margin: -45px 0 30px;
+	background-size: 100%;
+	background-position-y: -195px;
 }
 #adbox .area {
 	height: 531px;
@@ -298,6 +300,13 @@ p a:hover {
 #about .section:first-child p {
 	padding-bottom: 42px;
 }
+#about img {
+    border-radius: 20px;
+    border: 1px solid #000000;
+    padding: 0px;
+    width: 120px;
+    height: 120px;
+}
 /** contact **/
 #contact p {
 	padding-bottom: 30px;
@@ -339,42 +348,32 @@ p a:hover {
 	padding-left: 130px;
 }
 /** Blog Page **/
-#blog {
+#services {
 	margin-bottom: 60px;
 }
-#blog .main {
-	background: url(../images/dash.png) repeat-y right top;
+#services .main {
 	min-height: 500px;
 	width: 598px;
 	margin: 0;
-	padding: 0 22px 0 40px;
+	padding: 0 22px 0 200px;
 }
-#blog .list li {
+#services .list li {
 	background-position: left bottom;
 	height: 194px;
 	width: 540px;
 	margin: 0 0 18px;
 	padding: 20px 40px 10px 20px;
 }
-#blog .list li img {
+#services .list li img {
 	margin: 0 20px 0 0;
 }
-#blog .list li div {
-	padding-left: 150px;
+#services .list li div {
+	padding-left: 6px;
 }
-#blog .list li div p {
-	letter-spacing: 1px;
-	padding-bottom: 6px;
-	border-bottom: 1px solid #e5e5e5;
+#services .list li div table tr td {
+	padding-right: 19px;
 }
-#blog .list li div > span {
-	color: #9b8d84;
-	font: 12px/42px Arial, Helvetica, sans-serif;
-}
-#blog .list li div > span.views {
-	float: right;
-}
-#blog .sidebar {
+#services .sidebar {
 	float: right;
 	width: 240px;
 	padding: 0 40px 0 18px;
