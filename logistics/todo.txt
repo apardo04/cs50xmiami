@@ -1,11 +1,11 @@
 1. Global header/footer
-2. contact.html
 3. about.html .box same size
-4. Make transparent logo
-5. Security/Insurance
-6.get rid of, or create other social medias
+4. Better colors on logo
+5. Security/Insurance in services.html
+6. get rid of, or create other social medias
 7. metatags
 8. Current services/ pages OR right block of services.html will contain the information?
+9. index<ul> Keep them stacked on mobile, but always below picture on wide view.
 
 ---------------
 Stock Photo link.. Can get bigger versions as well:
