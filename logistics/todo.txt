@@ -6,6 +6,13 @@
 7. metatags
 8. Current services/ pages OR right block of services.html will contain the information?
 9. index<ul> Keep them stacked on mobile, but always below picture on wide view.
+10. Whether to keep this or not, found inside of oceanimports: // maybe in services.html
+      Our well established trade lanes include:
+
+      Asia to North America
+      Asia to Europe
+      Europe to North America
+      Latin America to North America
 
 ---------------
 Stock Photo link.. Can get bigger versions as well:

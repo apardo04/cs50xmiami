@@ -164,7 +164,7 @@ p {
 	color: #9b8d84;
 	font: 12px/24px Arial, Helvetica, sans-serif;
 	padding: 0 0 24px;
-	margin: 0;
+	margin: 0px;
 }
 p a {
 	color: #9b8d84;
@@ -256,7 +256,7 @@ p a:hover {
 .main {
 	float: left;
 	width: 600px;
-	margin: 0 30px 0 10px;
+	margin: 7px 30px 0 10px;
 }
 /** quote **/
 .quote {
@@ -499,11 +499,24 @@ p a:hover {
 	display: block;
 }
 /*------------------------------ FOOTER ------------------------------*/
-#footer {
+#index-footer {
 	background: url(../images/bg-footer.png) repeat left top;
 	display: inline-block;
 	width: 100%;
-	padding: 30px 0;
+	padding: 7px 0;
+}
+#footer {
+    background: url(../images/bg-footer.png) repeat left top;
+    display: inline-block;
+    width: 100%;
+    padding: 7px 0;
+    position: fixed;
+    bottom: 0;
+}
+@media screen and (max-height: 710px) {
+    #footer {
+        display: none;
+    }
 }
 .divider {
 	background: url(../images/divider.png) no-repeat center top;
@@ -519,12 +532,13 @@ p a:hover {
 	font: 12px/24px Arial, Helvetica, sans-serif;
 	margin: 0;
 	text-shadow: 0 1px #fff;
+	padding: 12px;
 }
 #connect {
 	float: right;
 	display: inline-block;
 	list-style: none;
-	margin: 0;
+	margin: 9px;
 	padding: 0;
 }
 #connect a {
