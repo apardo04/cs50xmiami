@@ -1,0 +1,219 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Inter Custom Logistics</title>
+	<link rel="stylesheet" href="css/styles.css" type="text/css" />
+  <script type="text/JavaScript">
+  function MM_preloadImages() { //v3.0
+    var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+      var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+      if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+  }
+  function validate(th)
+  {
+  	if(th.name.value.length<=0)
+  	{
+  		alert("Please enter name");
+  		th.name.focus();
+  		return false;
+  	}
+  	else if(th.company_name.value.length<=0)
+  	{
+  		alert("Please enter company name");
+  		th.company_name.focus();
+  		return false;
+  	}
+  	else if(th.email_address.value.length<=0)
+  	{
+  		alert("Please enter email");
+  		th.email_address.focus();
+  		return false;
+  	}
+  	return true;
+  }
+  </script>
+</head>
+<body>
+	<div id="header">
+		<div class="area">
+			<div id="logo">
+				<a href="index.html"><img src="images/logo-border.png" alt="LOGO" height="86" width="170" /></a>
+			</div>
+			<div id="logo-text">INTER CUSTOMS LOGISTICS
+			</div>
+			<ul id="navigation">
+				<li>
+					<a href="index.html">Home</a>
+				</li>
+				<li class="selected">
+					<a href="about.html">About</a>
+				</li>
+				<li>
+					<a href="services.html">Services</a>
+				</li>
+				<li>
+					<a href="contact.html">Contact</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div id="contents" style="min-height: 490px;">
+		<a href="quote.html">
+			<div id="about" class="area">
+			<div class="quote">
+				<h2>Get Free Quote</h2>
+			</div>
+		</a>
+			<div class="section">
+				<div class="box">
+					<div>
+						<div>
+							<h3>Request Quote</h3>
+							<p>
+                Online Rate Request
+              </p>
+              <p>
+                We are pleased to offer you a quotation for your global logistics needs. Please fill out the following information, and we will be in touch with you shortly.
+							</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="section">
+        <div class="box">
+          <div>
+            <form name="mm" action="sendquote.php" method="post" style="display:inline" onSubmit="return validate(this);">
+          	<table id="quote-table" width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td align="left" valign="top">
+                  <table width="100%" border="0" cellspacing="0" cellpadding="3">
+                    <tr>
+                      <td height="30" align="left" valign="top" bgcolor="#F0F0EE" class="quote_labels">Name</td>
+                      <td width="5" align="left" valign="top" bgcolor="#F0F0EE">:</td>
+                      <td align="left" valign="top" bgcolor="#F0F0EE"><input type="text" name="name" size="35"></td>
+                    </tr>
+                    <tr>
+                      <td height="30" align="left" valign="top" bgcolor="#F0F0EE" class="quote_labels">Company Name</td>
+                      <td align="left" valign="top" bgcolor="#F0F0EE">:</td>
+                      <td align="left" valign="top" bgcolor="#F0F0EE"><input type="text" name="company_name" size="35"></td>
+                    </tr>
+                    <tr>
+                      <td height="30" align="left" valign="top" bgcolor="#F0F0EE" class="quote_labels">Email Address</td>
+                      <td align="left" valign="top" bgcolor="#F0F0EE">:</td>
+                      <td align="left" valign="top" bgcolor="#F0F0EE"><input type="text" name="email_address" size="35"></td>
+                    </tr>
+                    <tr>
+                      <td height="30" align="left" valign="top" bgcolor="#F0F0EE" class="quote_labels">Phone Number</td>
+                      <td align="left" valign="top" bgcolor="#F0F0EE">:</td>
+                      <td align="left" valign="top" bgcolor="#F0F0EE"><input name="phone" type="text" id="phone" size="25"></td>
+                    </tr>
+                    <tr>
+                      <td height="40" align="left" valign="top" bgcolor="#F0F0EE" class="quote_labels" >Origin of Shipment<br></td>
+                      <td valign="top" bgcolor="#F0F0EE">:</td>
+                      <td valign="top" bgcolor="#F0F0EE">
+                        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                          <tr>
+                            <td align="left"><input type="text" name="origin_city" size="12" maxlength="30"><br>City</td>
+                            <td align="left"><input type="text" name="origin_state" size="12" maxlength="30"><br>State</td>
+                            <td align="left"><input type="text" name="origin_country" size="12" maxlength="30"><br>Country</td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td height="40" align="left" valign="top" bgcolor="#F0F0EE" class="quote_labels" >Destination of Shipment<br></td>
+                      <td align="left" valign="top" bgcolor="#F0F0EE">:</td>
+                      <td align="left" valign="top" bgcolor="#F0F0EE">
+                        <table border="0" cellspacing="0" cellpadding="0" width="100%">
+                          <tr>
+                            <td align="left"><input type="text" name="destin_city" size="12" maxlength="30"><br>City</td>
+                            <td align="left"><input type="text" name="destin_state" size="12" maxlength="30"><br>State</td>
+                            <td align="left"><input type="text" name="destin_country" size="12" maxlength="30"><br>Country</td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td height="30" align="left" valign="top" bgcolor="#F0F0EE" class="quote_labels" >Commodity</td>
+                      <td align="left" valign="top" bgcolor="#F0F0EE">:</td>
+                      <td align="left" valign="top" bgcolor="#F0F0EE"><input type="text" name="commodity" size="25"></td>
+                    </tr>
+                    <tr>
+                      <td height="30" align="left" valign="top" bgcolor="#F0F0EE" class="quote_labels">Number of Cartons</td>
+                      <td align="left" valign="top" bgcolor="#F0F0EE">:</td>
+                      <td align="left" valign="top" bgcolor="#F0F0EE"><input type="text" name="cartons" size="10"></td>
+                    </tr>
+                    <tr>
+                      <td height="30" align="left" valign="top" bgcolor="#F0F0EE" class="quote_labels" >Weight in lbs.</td>
+                      <td align="left" valign="top" bgcolor="#F0F0EE">:</td>
+                      <td align="left" valign="top" bgcolor="#F0F0EE"><input type="text" name="weight" size="10">lbs</td>
+                    </tr>
+                    <tr>
+                      <td height="50" align="left" valign="top" bgcolor="#F0F0EE" class="quote_labels" >Dimensions in Inches</td>
+                      <td valign="top" bgcolor="#F0F0EE">:</td>
+                      <td valign="top" bgcolor="#F0F0EE">
+                        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                          <tr>
+                            <td>length
+                              <input name="length" type="text" size="4" maxlength="4">
+                            </td>
+                            <td>width
+                              <input type="text" name="width" size="4" maxlength="4">
+                            </td>
+                            <td>height
+                              <input type="text" name="height" size="4" maxlength="4">
+                            </td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td height="40" align="left" valign="top" bgcolor="#F0F0EE" class="quote_labels" >Method of Transportation</td>
+                      <td align="left" valign="top" bgcolor="#F0F0EE">:</td>
+                      <td align="left" valign="top" bgcolor="#F0F0EE">
+                        <table border="0" cellspacing="0" cellpadding="0" width="200">
+                          <tr>
+                            <td width="50%"><input type="radio" name="method" value="Ocean">OCEAN</td>
+                            <td width="50%"><input type="radio" name="method" value="Air">AIR</td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="left" valign="top" bgcolor="#F0F0EE" class="quote_labels" >Brief Description of Cargo </td>
+                      <td align="left" valign="top" bgcolor="#F0F0EE">:</td>
+                      <td align="left" valign="top" bgcolor="#F0F0EE"><textarea name="description" cols="35" rows="2"></textarea></td>
+                    </tr>
+                    <tr>
+                      <td align="left" valign="top" bgcolor="#F0F0EE" class="quote_labels" >Other Comments</td>
+                      <td valign="top" bgcolor="#F0F0EE">:</td>
+                      <td valign="top" bgcolor="#F0F0EE"><textarea name="comments" cols="35" rows="2" style="height: 50px"></textarea></td>
+                    </tr>
+                    <tr>
+                      <td valign="top" bgcolor="#F0F0EE">&nbsp;</td>
+                      <td valign="top" bgcolor="#F0F0EE">&nbsp;</td>
+                      <td bgcolor="#F0F0EE"><input type="submit" value="Submit Request" name="SubmitButtonName2">
+                        <input type="reset" value="Clear" name="SubmitButtonName"></td>
+                    </tr>
+                </table>
+              </td>
+             </tr>
+           </table>
+		     </div>
+				</div>
+			</div>
+		</div>
+	</div>
+<div id="index-footer">
+	<div class="area">
+		<div id="connect">
+			<a href="http://freewebsitetemplates.com/go/googleplus/" target="_blank" class="googleplus"></a> <a href="http://www.freewebsitetemplates.com/misc/contact/" target="_blank" class="mail"></a> <a href="https://www.facebook.com/InterCustomLogistics?fref=ts" target="_blank" class="facebook"></a> <a href="http://freewebsitetemplates.com/go/twitter/" target="_blank" class="twitter"></a>
+		</div>
+		<p>
+			© 2015 Inter Custom Logistics. All Rights Reserved.
+		</p>
+	</div>
+</div>
+</body>
+</html>
