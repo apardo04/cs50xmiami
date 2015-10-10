@@ -1,7 +1,6 @@
 1. Global header/footer
-3. about.html .box same size
-4. Better colors on logo
-5. Security/Insurance in services.html
+4. Better colors on logo !important
+5. Security/Insurance in services.html !important
 6. get rid of, or create other social medias
 7. metatags
 8. Current services/ pages OR right block of services.html will contain the information?
@@ -14,9 +13,11 @@
       Europe to North America
       Latin America to North America
 
-11. Quote Form background color.
 12. Why choose us? Certifications, tracking, insurance/safety
-
+13. Keep LAND transport div? OR change to brokerage...?
+14. What do transports link to?
+15. sendquote.php
+16. Track your cargo
 ---------------
 Stock Photo link.. Can get bigger versions as well:
 https://www.pexels.com/photo/city-flying-vacation-working-1850/
