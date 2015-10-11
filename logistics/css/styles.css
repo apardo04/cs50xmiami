@@ -540,6 +540,37 @@ p a:hover {
 	color: #fc6700;
 	display: block;
 }
+/** Button **/
+.btn {
+  background: #F0F0EE;
+  background-image: -webkit-linear-gradient(top, #F0F0EE, #F2F2F0);
+  background-image: -moz-linear-gradient(top, #F0F0EE, #F2F2F0);
+  background-image: -ms-linear-gradient(top, #F0F0EE, #F2F2F0);
+  background-image: -o-linear-gradient(top, #F0F0EE, #F2F2F0);
+  background-image: linear-gradient(to bottom, #F0F0EE, #F2F2F0);
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 28px;
+  text-shadow: 0px 1px 0px #ff0000;
+  font-family: Georgia;
+  color: #000000;
+  font-size: 16px;
+  padding: 5px 12px 5px 10px;
+  border: solid #000000 2px;
+  text-decoration: none;
+	margin: -10px 25px;
+}
+
+.btn:hover {
+  background: #948d82;
+  background-image: -webkit-linear-gradient(top, #948d82, #ccbaba);
+  background-image: -moz-linear-gradient(top, #948d82, #ccbaba);
+  background-image: -ms-linear-gradient(top, #948d82, #ccbaba);
+  background-image: -o-linear-gradient(top, #948d82, #ccbaba);
+  background-image: linear-gradient(to bottom, #948d82, #ccbaba);
+  text-decoration: none;
+	cursor: pointer;
+}
 /*------------------------------ FOOTER ------------------------------*/
 #index-footer {
 	background: url(../images/bg-footer.png) repeat left top;

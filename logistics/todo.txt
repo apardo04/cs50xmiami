@@ -13,11 +13,25 @@
       Europe to North America
       Latin America to North America
 
-12. Why choose us? Certifications, tracking, insurance/safety
 13. Keep LAND transport div? OR change to brokerage...?
 14. What do transports link to?
 15. sendquote.php
 16. Track your cargo
+
+resources:
+acronyms
+curency converter
+	Worldwide Phone Directory
+  world airports --- http://www.worldclassshipping.com/wcs_citycodes_A.html
+  air/ocean container sizes -- http://www.evergreen-marine.com/tei1/jsp/TEI1_Containers.jsp
+  customs -- http://www.cbp.gov/trade
+  federal maritime commisoions
+  hazmat -- http://www.ehs.neu.edu/hazardous_material/hazardous_material/
+  world clock
+  world map
+  world ports -- http://www.worldportsource.com/countries.php
+  incoterms -- http://www.export.gov/faq/eg_main_043740.asp
+  metric converter
 ---------------
 Stock Photo link.. Can get bigger versions as well:
 https://www.pexels.com/photo/city-flying-vacation-working-1850/
