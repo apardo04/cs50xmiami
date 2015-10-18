@@ -35,3 +35,14 @@ like Wheel of Fortune without the wheel and fortune).
 */
 
 // write your solution here...
+var word = ['f', 'o', 'x'];
+var guess = ['_', '_', '_'];
+
+function guessLetter(letter) {
+  for (var i = 0; i < word.length; i++) {
+    if (letter === word[i]) {
+      guess[i] = word[i];
+    }
+    document.write('<h2>You found a letter!');
+  }
+}

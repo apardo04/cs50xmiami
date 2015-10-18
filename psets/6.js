@@ -19,5 +19,4 @@ function mixUp(a, b) {
 }
 var word = "hello";
 var word2 = "world";
-var mix = mixUp(word, word2);
-console.log(mix);
+console.log(mixUp(word, word2));
