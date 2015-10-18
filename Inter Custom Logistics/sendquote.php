@@ -87,5 +87,5 @@ $Reply_To = "apardo04@gmail.com"; //"gladysp@intercustom.com";
 $To = "gladysp@intercustom.com";
 
 SendMail($From_Display, $From_Email, $Reply_To, $To, "", "", $Subject, $Adminbd, 0);
-echo "<script language='javascript'>document.location="thanks.html";</script>";
+echo "<script language='javascript'>document.location='thanks.html';</script>";
 ?>

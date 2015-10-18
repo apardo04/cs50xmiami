@@ -10,16 +10,15 @@
       Europe to North America
       Latin America to North America
 
-15. test sendquote.php
+15. did i recieve sendquote.php test email?
 16. Track your cargo
 
-resources:
-  acronyms
  ----------------------- !important
   1. Make transport links easier to click
   2. Better logo colors
   3. Firefox compatibility(indexpic)
   4. Metatags
+  5. contact map opening app on mobile
 ---------------
 Stock Photo link.. Can get bigger versions as well:
 https://www.pexels.com/photo/city-flying-vacation-working-1850/
