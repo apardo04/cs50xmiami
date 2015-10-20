@@ -28,3 +28,8 @@ https://bootstrapbay.com/blog/free-stock-photos/
 
 
 https://www.nationalaircargo.com/css/images/aircargo_4.jpg
+
+-----------------------
+created index2
+created id="index-contents" css
+created index-quote2 css
