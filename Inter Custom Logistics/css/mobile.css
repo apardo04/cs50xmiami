@@ -183,3 +183,6 @@
     }
 
 }
+.stopScroll{
+  overflow:hidden;
+}
