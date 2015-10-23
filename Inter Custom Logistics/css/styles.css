@@ -704,3 +704,6 @@ p a:hover {
 	width: 960px;
 	margin: 0 auto;
 }
+div#menu-button {
+	display: none;
+}

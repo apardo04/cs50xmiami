@@ -7,6 +7,15 @@
 	<link rel="stylesheet" href="css/styles.css" type="text/css" />
 	<link rel="stylesheet" href="css/mobile.css" type="text/css" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$("#menu-button").click(function(){
+				$(".menu",this).toggleClass("hover");
+				$("#navigation").toggleClass("show");
+			});
+		});
+	</script>
 </head>
 <body>
 	<div id="header">
@@ -37,6 +46,9 @@
 					<a href="contact.html">Contact</a>
 				</li>
 			</ul>
+			<div id="menu-button">
+				<a href="#" class="menu example5"><span></span></a>
+			</div>
 		</div>
 	</div>
 	<div id="contents" style="min-height: 490px;">
