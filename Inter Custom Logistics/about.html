@@ -2,22 +2,41 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Inter Custom Logistics-Miami Freight Forwarding About US</title>
+	<title>Inter Custom Logistics-Miami Freight Forwarding</title>
 	<link rel="stylesheet" href="css/styles.css" type="text/css" />
+	<link rel="stylesheet" href="css/mobile.css" type="text/css" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$("#menu-button").click(function(){
+				$(".menu",this).toggleClass("hover");
+				$("#navigation").toggleClass("show");
+				$("body").toggleClass("stopScroll");
+			});
+		});
+	</script>
 </head>
 <body>
 	<div id="header">
 		<div class="area-header">
 			<div id="logo">
-				<a href="index.html"><img src="images/logo-border.png" alt="LOGO" height="86" width="170" /></a>
+				<a href="index.html">
+					<img src="images/logo-border.png" alt="LOGO">
+				</a>
 			</div>
 			<div id="logo-text"><a href="index.html">INTER CUSTOMS LOGISTICS</a>
 			</div>
+			<div class="index-quote">
+				<a href="quote.html">
+					<h2>Get Your Free Quote</h2>
+				</a>
+			</div>
 			<ul id="navigation">
-				<li>
+				<li class="selected">
 					<a href="index.html">Home</a>
 				</li>
-				<li class="selected">
+				<li>
 					<a href="about.html">About</a>
 				</li>
 				<li>
@@ -27,15 +46,13 @@
 					<a href="contact.html">Contact</a>
 				</li>
 			</ul>
+			<div id="menu-button">
+				<a href="#" class="menu example5"><span></span></a>
+			</div>
 		</div>
 	</div>
 	<div id="contents" style="min-height: 490px;margin-top: 40px;">
-		<div id="about" class="area-quote">
-			<a href="quote.html">
-				<div class="quote">
-					<h2>Get Your Free Quote</h2>
-				</div>
-			</a>
+		<div id="about" class="area">
 			<div class="section">
 				<div class="box">
 					<div>
@@ -79,7 +96,7 @@
 		</div>
 	</div>
 	<div id="footer">
-		<div class="area">
+		<div class="footer-content">
 			<div id="connect">
 				<a href="mailto:traffic@intercustom.com" target="_blank" class="mail"></a> <a href="https://www.facebook.com/InterCustomLogistics?fref=ts" target="_blank" class="facebook"></a>
 			</div>

@@ -101,7 +101,7 @@
     ul#navigation.show{
         display: block !important;
         right:0;
-
+        z-index: 9;
     }
     /*----------------------end of menu css------------*/
     div#logo-text {
@@ -148,6 +148,13 @@
         width: 97% !important;
         padding: 2%;
     }
+    .box {
+      padding-top: 30px;
+      width: 323px;
+    }
+    .section {
+      width: 338px;
+    }
 
     .frame {
         margin: 0 auto !important;
@@ -182,6 +189,16 @@
         /* display:none !important; */
     }
 
+}
+@media screen and (max-height: 826px) {
+	#footer {
+		display: none;
+	}
+}
+@media screen and (max-height: 855px) {
+	#quote-footer {
+		display: none !important;
+	}
 }
 .stopScroll{
   overflow:hidden;

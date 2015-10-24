@@ -179,7 +179,7 @@ h2 span {
 	color: #fc6700;
 }
 h3 {
-	font-size: 20px;
+	font-size: 19px;
 	margin: 0;
 	text-transform: none;
 }
@@ -637,16 +637,6 @@ p a:hover {
 	padding: 7px 0;
 	position: fixed;
 	bottom: 0;
-}
-@media screen and (max-height: 710px) {
-	#footer {
-		display: none;
-	}
-}
-@media screen and (max-height: 855px) {
-	#quote-footer {
-		display: none !important;
-	}
 }
 .divider {
 	background: url(../images/divider.png) no-repeat center top;
