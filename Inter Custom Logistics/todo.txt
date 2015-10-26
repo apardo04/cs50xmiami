@@ -14,7 +14,7 @@
 16. Track your cargo
 
  ----------------------- !important
-  1. Make transport links easier to click
+  1. Make the Services/Resources Page "box" div same width as header
   2. Better logo colors
   3. Firefox compatibility(indexpic)
   4. Metatags

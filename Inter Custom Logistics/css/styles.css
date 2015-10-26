@@ -56,10 +56,6 @@ img {
 	background-image: url(../images/bg-contentbox.png);
 	background-repeat: no-repeat;
 }
-.box2, .box2 > div {
-	background-image: url(../images/bg-sidebar.png);
-	background-repeat: no-repeat;
-}
 #connect a, .archives > li > span {
 	background: url(../images/icons.png) no-repeat;
 }
@@ -291,17 +287,6 @@ p a:hover {
 	background-repeat: repeat-y;
 	padding: 1px 20px;
 	color: #000000 !important;
-}
-/** box2 **/
-.box2 {
-	background-position: right bottom;
-	padding: 0 0 10px;
-}
-.box2 > div {
-	background-position: left top;
-	background-repeat: repeat-y;
-	min-height: 100px;
-	padding: 0 40px;
 }
 /** main **/
 .main {
