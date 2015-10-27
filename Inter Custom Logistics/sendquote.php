@@ -82,7 +82,7 @@ $Adminbd = $Adminbd.$bd;
 $From_Display = "Admin";
 $Subject = "Quote Request InterCustom.com ";
 $From_Email = "admin@intercustom.com";
-$Reply_To = "apardo04@gmail.com"; //"gladysp@intercustom.com";
+$Reply_To =  "gladysp@intercustom.com";
 
 $To = "gladysp@intercustom.com";
 
