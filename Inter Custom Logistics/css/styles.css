@@ -107,7 +107,7 @@ div #logo-text {
 	line-height: 75px;
 	position: relative;
 	top: 25px;
-	padding-left: 25px;
+	padding-left: 20px;
 	font-size: 35px;
 	font-weight: bold;
 	color: #181E23;
@@ -305,7 +305,7 @@ p a:hover {
 	width: 290px;
 	position: relative;
 	top: 85px;
-	left: -461px;
+	left: -49%;
 }
 
 .index-quote2 {
