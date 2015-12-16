@@ -1,3 +1,4 @@
+0. resource.html mobile.css
 1. Global header/footer
 5. Security/Insurance in services.html !important
 8. Current services/ pages OR right block of services.html will contain the information?

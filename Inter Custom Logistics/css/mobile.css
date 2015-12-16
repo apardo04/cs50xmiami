@@ -197,6 +197,16 @@
     }
 
 }
+@media screen and (max-width: 673px) and (min-width: 446px) {
+  .box {
+    width: 130%;
+  }
+}
+/*@media screen and (max-width: 673px) and (min-width: 446px) {
+#box-services {
+    width: 130%;
+  }
+}*/
 @media screen and (max-height: 826px) {
 	#footer {
 		display: none;
