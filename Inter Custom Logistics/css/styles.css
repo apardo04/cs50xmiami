@@ -209,11 +209,11 @@ p a:hover {
 		background-position-y: -125px;
 	}
 }
-@-moz-document url-prefix() {
+/*@-moz-document url-prefix() {
 	#banner {
 		background-position: 294px -176px;
 	}
-}
+}*/
 #banner .area {
 	height: 527px;
 	position: relative;
