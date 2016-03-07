@@ -115,8 +115,16 @@ div #logo-text {
 	font-family: Lucida Sans Unicode;
 }
 #logo-text a {
-	text-decoration: none;
-	color: inherit;
+    text-decoration: none;
+    color: inherit;
+    padding-right: 11px;
+}
+@-moz-document url-prefix() {
+	#logo-text a {
+	    text-decoration: none;
+	    color: inherit;
+	    padding-right: 0px;
+	}
 }
 /** navigation **/
 #navigation {
@@ -209,11 +217,6 @@ p a:hover {
 		background-position-y: -125px;
 	}
 }
-/*@-moz-document url-prefix() {
-	#banner {
-		background-position: 294px -176px;
-	}
-}*/
 #banner .area {
 	height: 527px;
 	position: relative;
