@@ -1,0 +1,57 @@
+<html>
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+</head>
+<style>
+  #click_here, #response {
+    border:1px solid black;
+    width:25%;
+    height:50px;
+    background: black;
+    color: #6DDFC7;
+    font-weight:bolder;
+    font-size: 22px;
+    cursor:pointer;
+  }
+  #name {
+    font-weight:bolder;
+    font-size: 22px;
+    width:25%;
+    height:30px;
+  }
+  #userInput {
+    width:12.5%;
+    height:22px;
+    margin-bottom: 13px;
+  }
+  #bmo_img {
+    width:64%;
+  }
+</style>
+  <script>
+    $(document).ready(function() {
+      function getRandomIntInclusive(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      }
+      $('#click_here').click(function(){
+        var name = $("#userInput").val();
+        var praises = ["You're Awesome " + name,
+                        "You're Solid " + name,
+                        "You're Kickass " + name,
+                        "You're Spiffing " + name,
+                        "You're Super " + name,
+                        "You're Doozie " + name,
+                      ];
+        $('#response').text(praises[getRandomIntInclusive(0,praises.length-1)]);
+        $('#bmo').css('display', 'table');
+      });
+    });
+  </script>
+  <body>
+    <div id="name">What is your name?</div>
+    <input id="userInput" maxlength="14" name="result" value="Mileini"/>
+    <div id="click_here"> Click here for a little Praising </div><br>
+    <div id="response"></div>
+    <div id="bmo" style="display:none;"><img src="https://media.giphy.com/media/A9rJJcBbu1ah2/giphy.gif" id="bmo_img"/></div>
+  </body>
+</html>
