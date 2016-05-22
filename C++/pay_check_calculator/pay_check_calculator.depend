@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1463501073 source:/Users/adrianpardo/Documents/cs50xmiami/C++/pay_check_calculator/main.cpp
+	<iostream>
+	<string>
+	<sstream>
+

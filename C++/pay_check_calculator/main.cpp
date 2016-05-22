@@ -18,26 +18,28 @@ int main()
         stringstream myStream(input);
         if (myStream >> hours)
             break;
-        cout << "Error:" << endl;
+            cout << "Error: Not a valid amount of hours" << endl;
     }
     while (true) {
-    cout << "Please enter your rate of pay: $";
-    getline(cin, input);
+        cout << "Please enter your rate of pay: $";
+        getline(cin, input);
 
-    stringstream myStream(input);
-    if (myStream >> rate)
-        break;
-    cout << "Error:" << endl;
+        stringstream myStream(input);
+        if (myStream >> rate)
+            break;
+            cout << "Error: Not a valid pay rate" << endl;
     }
     while (true) {
-    cout << "How much do you get taxed?";
-    getline(cin, input);
+        cout << "How much do you get taxed?";
+        getline(cin, input);
 
-    stringstream myStream(input);
-    if (myStream >> tax)
-        break;
-    cout << "Error:" << endl;
+        stringstream myStream(input);
+        if (myStream >> tax)
+            break;
+            cout << "Error: Not a valid tax rate" << endl;
     }
     pay = (hours * rate) - ((hours * rate) * tax);
-    cout << "You earned: $ " << pay << endl << endl;
+    cout << "You earned: $ " << pay << endl;
+    cin.get();
+    return 0;
 }
