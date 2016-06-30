@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <sstream>
+#include <iomanip>
 
 using namespace std;
 
@@ -39,7 +40,7 @@ int main()
             cout << "Error: Not a valid tax rate" << endl;
     }
     pay = (hours * rate) - ((hours * rate) * tax);
-    cout << "You earned: $ " << pay << endl;
+    cout << setprecision(2) << fixed << "You earned: $ " << pay << endl;
     cin.get();
     return 0;
 }

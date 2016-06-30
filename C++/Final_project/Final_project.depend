@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1466822822 source:/Users/adrianpardo/Documents/cs50xmiami/C++/Final_project/main.cpp
+	<iostream>
+	<iomanip>
+	<ctime>
+	<cstdlib>
+	<cmath>
+	<sstream>
+	<string>
+

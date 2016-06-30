@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+  </head>
+  <body>
+    <div id="content">
+      <div id="card">
+      <div id="card-name"></div>
+      <div id="card-health">
+        110HP
+      </div>
+      <div id="card-image">
+        <img src="https://66.media.tumblr.com/a6e7ba1adc71792ccb480137bd7823e9/tumblr_o804kfDz911uies7so1_500.png">
+      </div>
+      <div id="card-moveset">
+        <div class="move" id="move-1">
+          <div class="move-1-row">
+            <div class="move-name" id="move-1-name">
+            React
+            </div>
+            <div class="move-cost" id="move-1-cost">
+              <!--<i class="fa fa-thumbs-o-up" aria-hidden="true"></i>-->
+              <img src='http://www.top3tours.com/TourAdvisors_Top_3_Best_Tours_Puerto_Plata/slider_images/FB-ThumbsUp.gif'>
+            </div>
+            <div class="move-damage" id="move-1-damage">
+            20
+            </div>
+          </div>
+          <div class="move-effect" id="move-1-effect">
+            Flip a coin. If heads, during your opponents next turn, prevent all damage done to spongegar.
+          </div>
+        </div>
+        <div class="move" id="move-2">
+          <div class="move-cost" id="move-2-cost">
+            <!--<i class="fa fa-thumbs-o-up" aria-hidden="true"></i>-->
+          </div>
+          <div class="move-name" id="move-2-name">
+          Savage
+          </div>
+          <div class="move-damage" id="move-2-damage">
+          60
+          </div>
+          <div class="move-effect" id="move-2-effect">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+  var hero = [];
+  var spongegar = {name: 'SpongeGar', hp: 110, m1: 'React', m1_dmg: 20, m1_effect: 'Flip a coin. If heads, during your opponents next turn, prevent all damage done to spongegar.'};
+  hero[0] = spongegar;
+  $('#card-name').text(hero[0].name);
+  console.log(spongegar.name);
+  </script>
+  <style>
+    div#card {
+    border: 5px solid #ffd746;
+    width: 200px;
+    padding: 10px;
+    border-radius: 5px;
+    background: #ecd9bf;
+    font-family: arial;
+    display: table;
+    }
+    div#card-image {
+    width: 100%;
+    margin-top: 5px;
+    float: left;
+    border: 2px solid #565656;
+    }
+    div#card-image img {
+    width: 100%;
+    margin: 0 auto;
+    display:  table;
+    background: #7d6b6b;
+    }
+    div#card-health {
+    float: right;
+    }
+    div#card-name {
+    float: left;
+    font-weight: bold;
+    }
+    div#card-moveset {
+    float: left;
+    width: 100%;
+    padding-top: 10px;
+    }
+    div#move-1-cost img {
+    max-width: 24px;
+    padding-left: 10px;
+    margin-top: -7px;
+    }
+    div#move-2 {
+      padding-top: 5px;
+    }
+    div.move-cost {
+    width: 50px;
+    float: left;
+    /* text-align: center; */
+    }
+    div.move{
+    width: 100%;
+    }
+    div.move-name
+    {
+      float: left;
+    }
+    div.move-damage {
+    float: right;
+    }
+    div.move-effect {
+    width: 190px;
+    display: table;
+    font-size: 12px;
+    padding-left: 10px;
+    }
+  </style>
+</body>
+</html>
