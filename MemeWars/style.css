@@ -1,5 +1,5 @@
 /* Hero Card CSS */
-div#card {
+div.card {
   border: 5px solid #ffd746;
   width: 200px;
   padding: 10px;
@@ -9,39 +9,9 @@ div#card {
   display: table;
   float:left;
 }
-div#card-image-cont {
-  width: 100%;
-  margin-top: 5px;
-  float: left;
-}
-div#card-img-cont img {
-  width: 100%;
-  margin: 0 auto;
-  display:  table;
-  background: #7d6b6b;
-  border: 2px solid #565656;
-  max-width: 196px;
-  max-height: 154px;
-}
-div#card-name {
-  float: left;
-  font-weight: bold;
-}
-div#card-hp {
-  float: right;
-  font-weight: bold;
-}
-div#card-moveset {
-  float: left;
-  width: 100%;
-  padding-top: 10px;
-}
-div#move2 {
-  padding-top: 12px;
-}
 div.move{
   width: 100%;
-  padding-top: 4px;
+  padding-top: 10px;
 }
 div.move-name
 {
@@ -65,25 +35,46 @@ div.move-effect {
   font-size: 12px;
   padding-left: 10px;
 }
+div#hero-image-cont {
+  width: 100%;
+  margin-top: 5px;
+  float: left;
+}
+div#img-cont img {
+  width: 100%;
+  margin: 0 auto;
+  display:  table;
+  background: #7d6b6b;
+  border: 2px solid #565656;
+  max-width: 196px;
+  max-height: 154px;
+}
+div#hero-name {
+  float: left;
+  font-weight: bold;
+}
+div#hero-hp {
+  float: right;
+  font-weight: bold;
+}
+div#card-moveset {
+  float: left;
+  width: 100%;
+  padding-top: 10px;
+}
+div#move2 {
+  padding-top: 12px;
+}
 
 /* Item Card CSS */
-div#item-card {
-  border: 5px solid #ffd746;
-  width: 200px;
-  padding: 10px;
-  border-radius: 5px;
-  background: #ecd9bf;
-  font-family: arial;
-  display: table;
-}
-div#item-name {
+div.card-name {
   text-align: center;
   font-weight: bold;
 }
-img#item-img {
+img.item-img {
     max-height: 111px !important;
 }
-div#item-effect {
+div.card-effect {
     text-align: center;
     padding-top: 6px;
 }
