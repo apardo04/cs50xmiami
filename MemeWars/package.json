@@ -1,0 +1,11 @@
+{
+  "name"  : "Meme Battle",
+  "version" : "1.0.0"
+  "private" : true,
+  "dependacies" : {
+    "socket.io" : "*",
+    "express" : "*",
+    "ejs" : "*"
+  },
+  "author"  : "Adrian Pardo"  
+}

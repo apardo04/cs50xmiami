@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1467337458 source:/Users/adrianpardo/Documents/cs50xmiami/C++/Adrian_Pardo_29_exam1/main.cpp
+	<iostream>
+	<sstream>
+

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Meme-Battle</title>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <link rel="stylesheet" href="/Users/adrianpardo/Documents/cs50xmiami/MemeWars/style.css">
+  </head>
+  <body>
+    <div id="content">
+      <div id="card">
+        <div id="card-name"></div>
+        <div id="card-hp"></div>
+        <div id="card-img-cont">
+          <img class="img" id="card-img" src="http://www.iconsdb.com/icons/preview/black/question-mark-xxl.png">
+        </div>
+        <div id="card-moveset">
+          <div class="move" id="move1">
+            <div class="move-row">
+              <div class="move-name" id="move1-name"></div>
+              <div class="move-cost" id="move1-cost"></div>
+              <div class="move-dmg" id="move1-dmg"></div>
+            </div>
+            <div class="move-effect" id="move1-effect"></div>
+          </div>
+          <div class="move" id="move2">
+            <div class="move-row">
+              <div class="move-name" id="move2-name"></div>
+              <div class="move-cost" id="move2-cost"></div>
+              <div class="move-dmg" id="move2-dmg"></div>
+            </div>
+            <div class="move-effect" id="move2-effect"></div>
+          </div>
+        </div>
+      </div>
+      <div id="item-card">
+        <div id="item-name"></div>
+        <div id="card-img-cont">
+          <img class="img" id="item-img" src="http://www.iconsdb.com/icons/preview/black/question-mark-xxl.png">
+        </div>
+        <div id="item-effect"></div>
+      </div>
+    </div>
+    <script>
+      var like = "<img src='/Users/adrianpardo/Documents/cs50xmiami/MemeWars/img/items/like.gif'/>";
+      var user = 0;
+      var itemDeck = 0;
+      var hero = [];
+      var item = [];
+      // Hero JS
+      var spongegar = {name: 'SpongeGar', hp: 120, img: '/Users/adrianpardo/Documents/cs50xmiami/MemeWars/img/Heroes/spongegar.png', m1: 'React', m1_energy: 1, m1_dmg: 20, m1_effect: 'Flip a coin. If heads, during your opponents next turn, prevent all damage done to spongegar.', m2: 'Savage', m2_energy: 2, m2_dmg: 60, m2_effect: ''};
+      var datboi = {name: 'Dat Boi', hp: 110, img: '/Users/adrianpardo/Documents/cs50xmiami/MemeWars/img/Heroes/datboi.png', m1: 'Ohh Shit', m1_energy: 1, m1_dmg: 30, m1_effect: 'Waddup now does +10 more damage(stacks)', m2: 'Waddup', m2_energy: 3, m2_dmg: 60, m2_effect: ''};
+      hero[0] = spongegar; hero[1] = datboi;
+      user = 0;
+      $('#card-name').text(hero[user].name);
+      $('#card-hp').text(hero[user].hp);
+      $("#card-img").attr("src", hero[user].img);
+      $('#move1-name').text(hero[user].m1);
+      for (var i = 0; i < hero[user].m1_energy; i++) {
+        $('#move1-cost').prepend(like);
+      }
+      $('#move1-dmg').text(hero[user].m1_dmg);
+      $('#move1-effect').text(hero[user].m1_effect);
+      $('#move2-name').text(hero[user].m2);
+      for (var i = 0; i < hero[user].m2_energy; i++) {
+        $('#move2-cost').prepend(like);
+      }
+      $('#move2-dmg').text(hero[user].m2_dmg);
+      $('#move2-effect').text(hero[user].m2_effect);
+
+      // Item JS
+      var dealWithIt = {name: 'Deal With It', img: '/Users/adrianpardo/Documents/cs50xmiami/MemeWars/img/Items/dealWithIt.png', effect: '+20 HP <br> Attached: +1 Like'};
+      var scumBagSteveHat = {name: 'Scumbag Steve Hat', img: '/Users/adrianpardo/Documents/cs50xmiami/MemeWars/img/Items/ScumBagSteveHat.png', effect: 'idk yet'};
+      item[0] = dealWithIt; item[1] = scumBagSteveHat;
+      itemDeck = 1;
+      $('#item-name').text(item[itemDeck].name);
+      $("#item-img").attr("src", item[itemDeck].img);
+      $('#item-effect').html(item[itemDeck].effect);
+      console.log(spongegar.name);
+    </script>
+  </body>
+</html>
