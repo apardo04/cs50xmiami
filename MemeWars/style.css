@@ -1,33 +1,57 @@
+body {
+    background: #3f444a;
+}
 /* Hero Card CSS */
 div.card {
   border: 5px solid #ffd746;
-  width: 200px;
-  padding: 10px;
+  width: 227px;
+  padding: 7px;
   border-radius: 5px;
   background: #ecd9bf;
   font-family: arial;
   display: table;
   float:left;
+  margin-right: 10px;
+}
+div.hero-name {
+  float: left;
+  font-weight: bold;
+  font-size: 19px;
+}
+div.card-hp {
+  float: right;
+  font-weight: bold;
 }
 div.move{
   width: 100%;
-  padding-top: 10px;
+  padding-top: 7px;
 }
-div.move-name
-{
-  float: left;
+div.move-name {
+    float: left;
+    margin-top: 3px;
+    padding-bottom: 3px;
 }
 div.move-cost {
-    width: 119px;
-  float: left;
+    width: 89px;
+    float: left;
+}
+div.move2b-cost {
+    width: 116px;
+    float: left;
 }
 div.move-cost img {
-  max-width: 24px;
-  padding-left: 10px;
-  margin-top: -7px;
+    max-width: 19px;
+    padding-left: 10px;
+    margin-top: 0px;
+}
+div.move2b-cost img {
+    max-width: 19px;
+    padding-left: 10px;
+    margin-top: 0px;
 }
 div.move-dmg {
   float: right;
+  margin-top: 3px;
 }
 div.move-effect {
   width: 190px;
@@ -46,16 +70,8 @@ div#img-cont img {
   display:  table;
   background: #7d6b6b;
   border: 2px solid #565656;
-  max-width: 196px;
-  max-height: 154px;
-}
-div#hero-name {
-  float: left;
-  font-weight: bold;
-}
-div#hero-hp {
-  float: right;
-  font-weight: bold;
+  max-width: 210px;
+  max-height: 159px;
 }
 div#card-moveset {
   float: left;
@@ -64,6 +80,9 @@ div#card-moveset {
 }
 div#move2 {
   padding-top: 12px;
+}
+div#move2b-cost {
+    width: 100%;
 }
 
 /* Item Card CSS */
@@ -77,4 +96,26 @@ img.item-img {
 div.card-effect {
     text-align: center;
     padding-top: 6px;
+}
+
+/* Support CSS */
+div#support-hp {
+    float: right;
+    position: absolute;
+    right: 3px;
+    bottom: -33px;
+    font-weight: 900;
+    color: #ffffff;
+    text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
+}
+.card-shield img {
+    width: 22px;
+    float: right;
+}
+.card-shield {
+    position: relative;
 }

@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <title>Meme-Battle</title>
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script type='text/javascript' src="file:///Users/adrianpardo/Documents/cs50xmiami/MemeWars/script.js"></script>
     <link rel="stylesheet" href="/Users/adrianpardo/Documents/cs50xmiami/MemeWars/style.css">
   </head>
   <body>
     <div id="content">
       <div class="card">
-        <div id="hero-name"></div>
-        <div id="hero-hp"></div>
+        <div class="hero-name" id="hero-name"></div>
+        <div class="card-hp" id="hero-hp"></div>
         <div id="img-cont">
           <img class="img" id="hero-img" src="http://www.iconsdb.com/icons/preview/black/question-mark-xxl.png">
         </div>
@@ -29,6 +30,7 @@
               <div class="move-cost" id="move2-cost"></div>
               <div class="move-dmg" id="move2-dmg"></div>
             </div>
+            <div class="move2b-cost" id="move2b-cost"></div>
             <div class="move-effect" id="move2-effect"></div>
           </div>
         </div>
@@ -42,58 +44,17 @@
       </div>
       <div class="card">
         <div class="card-name" id="support-name"></div>
+        <!--<div class ="card-hp" id="support-hp"></div>-->
         <div class="move-dmg" id="support-dmg"></div>
         <div id="img-cont">
           <img class="img" id="support-img" src="http://www.iconsdb.com/icons/preview/black/question-mark-xxl.png">
         </div>
         <div class="card-effect" id="support-effect"></div>
+        <div class="card-shield">
+          <img src='/Users/adrianpardo/Documents/cs50xmiami/MemeWars/img/extras/blooddrop.png'>
+          <div id="support-hp"></div>
+        </div>
       </div>
     </div>
-    <script>
-      var like = "<img src='/Users/adrianpardo/Documents/cs50xmiami/MemeWars/img/items/like.gif'/>";
-      var user = 0;
-      var itemDeck = 0;
-      var supportDeck = 0;
-      var hero = [];
-      var item = [];
-      var support = [];
-      // Hero JS
-      var spongegar = {name: 'SpongeGar', hp: 130, img: '/Users/adrianpardo/Documents/cs50xmiami/MemeWars/img/Heroes/spongegar.png', m1: 'React', m1_energy: 1, m1_dmg: 20, m1_effect: 'Flip a coin. If heads, during your opponents next turn, prevent all damage done to spongegar.', m2: 'Savage', m2_energy: 2, m2_dmg: 60, m2_effect: ''};
-      var datboi = {name: 'Dat Boi', hp: 120, img: '/Users/adrianpardo/Documents/cs50xmiami/MemeWars/img/Heroes/datboi.png', m1: 'Ohh Shit', m1_energy: 1, m1_dmg: 30, m1_effect: 'Waddup now does +10 more damage(stacks)', m2: 'Waddup', m2_energy: 3, m2_dmg: 60, m2_effect: ''};
-      hero[0] = spongegar; hero[1] = datboi;
-      user = 0;
-      $('#hero-name').text(hero[user].name);
-      $('#hero-hp').text(hero[user].hp);
-      $("#hero-img").attr("src", hero[user].img);
-      $('#move1-name').text(hero[user].m1);
-      for (var i = 0; i < hero[user].m1_energy; i++) {
-        $('#move1-cost').prepend(like);
-      }
-      $('#move1-dmg').text(hero[user].m1_dmg);
-      $('#move1-effect').text(hero[user].m1_effect);
-      $('#move2-name').text(hero[user].m2);
-      for (var i = 0; i < hero[user].m2_energy; i++) {
-        $('#move2-cost').prepend(like);
-      }
-      $('#move2-dmg').text(hero[user].m2_dmg);
-      $('#move2-effect').text(hero[user].m2_effect);
-
-      // Item JS
-      var dealWithIt = {name: 'Deal With It', img: '/Users/adrianpardo/Documents/cs50xmiami/MemeWars/img/Items/dealWithIt.png', effect: '+20 HP <br> Attached: +1 Like'};
-      var scumBagSteveHat = {name: 'Scumbag Steve Hat', img: '/Users/adrianpardo/Documents/cs50xmiami/MemeWars/img/Items/ScumBagSteveHat.png', effect: 'Oppoent losses 1 Like <br> Attached: +10 armor'};
-      item[0] = dealWithIt; item[1] = scumBagSteveHat;
-      itemDeck = 1;
-      $('#item-name').text(item[itemDeck].name);
-      $("#item-img").attr("src", item[itemDeck].img);
-      $('#item-effect').html(item[itemDeck].effect);
-
-      // Support JS
-      var challengeAccepted = {name: 'Me Gusta', img: '/Users/adrianpardo/Documents/cs50xmiami/MemeWars/img/supports/megusta.png', effect: '+10 Damage<br>+10 HP'};
-      support[0] = challengeAccepted;
-      $('#support-name').text(support[supportDeck].name);
-      $("#support-img").attr("src", support[supportDeck].img);
-      $('#support-effect').html(support[supportDeck].effect);
-      console.log(spongegar.name);
-    </script>
   </body>
 </html>
