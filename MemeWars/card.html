@@ -2,57 +2,121 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-    <title>Meme-Battle</title>
+    <title>Meme-Wars</title>
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script type='text/javascript' src="file:///Users/adrianpardo/Documents/cs50xmiami/MemeWars/script.js"></script>
     <link rel="stylesheet" href="/Users/adrianpardo/Documents/cs50xmiami/MemeWars/style.css">
   </head>
   <body>
     <div id="content">
-      <div class="card">
-        <div class="hero-name" id="hero-name"></div>
-        <div class="card-hp" id="hero-hp"></div>
-        <div id="img-cont">
-          <img class="img" id="hero-img" src="http://www.iconsdb.com/icons/preview/black/question-mark-xxl.png">
+      <div id="top-row">
+        <div class="turn-menu" id="turn-menu1">
+          <div class="menu-row" id="menu-move"></div>
+          <div class="menu-row" id="menu-move2"></div>
+          <div class="menu-row">Attach: Like</div>
+          <div class="menu-row">Attach: Item</div>
+          <div class="menu-row">Summon: Support</div>
+          <div class="menu-row">End Turn</div>
         </div>
-        <div id="hero-moveset">
-          <div class="move" id="move1">
-            <div class="move-row">
-              <div class="move-name" id="move1-name"></div>
-              <div class="move-cost" id="move1-cost"></div>
-              <div class="move-dmg" id="move1-dmg"></div>
-            </div>
-            <div class="move-effect" id="move1-effect"></div>
+        <div class="card">
+          <div class="hero-name" id="hero-name"></div>
+          <div class="card-hp" id="hero-hp"></div>
+          <div id="img-cont">
+            <img class="img" id="hero-img" src="http://www.iconsdb.com/icons/preview/black/question-mark-xxl.png">
           </div>
-          <div class="move" id="move2">
-            <div class="move-row">
-              <div class="move-name" id="move2-name"></div>
-              <div class="move-cost" id="move2-cost"></div>
-              <div class="move-dmg" id="move2-dmg"></div>
+          <div id="hero-moveset">
+            <div class="move" id="move1">
+              <div class="move-row">
+                <div class="move-name" id="move1-name"></div>
+                <div class="move-cost" id="move1-cost"></div>
+                <div class="move-dmg" id="move1-dmg"></div>
+              </div>
+              <div class="move-effect" id="move1-effect"></div>
             </div>
-            <div class="move2b-cost" id="move2b-cost"></div>
-            <div class="move-effect" id="move2-effect"></div>
+            <div class="move" id="move2">
+              <div class="move-row">
+                <div class="move-name" id="move2-name"></div>
+                <div class="move-cost" id="move2-cost"></div>
+                <div class="move-dmg" id="move2-dmg"></div>
+              </div>
+              <div class="move2b-cost" id="move2b-cost"></div>
+              <div class="move-effect" id="move2-effect"></div>
+            </div>
+          </div>
+        </div>
+        <div class="card" id="item-card">
+          <div class="card-name" id="item-name"></div>
+          <div id="img-cont">
+            <img class="item-img" id="item-img" src="http://www.iconsdb.com/icons/preview/black/question-mark-xxl.png">
+          </div>
+          <div class="card-effect" id="item-effect"></div>
+        </div>
+        <div class="card" id="support-card">
+          <div class="card-name" id="support-name"></div>
+          <div class="move-dmg" id="support-dmg"></div>
+          <div id="img-cont">
+            <img class="img" id="support-img" src="http://www.iconsdb.com/icons/preview/black/question-mark-xxl.png">
+          </div>
+          <div class="card-effect" id="support-effect"></div>
+          <div class="card-shield">
+            <img src='/Users/adrianpardo/Documents/cs50xmiami/MemeWars/img/extras/blooddrop.png'>
+            <div class="support-hp"id="support-hp"></div>
           </div>
         </div>
       </div>
-      <div class="card" id="item-card">
-        <div class="card-name" id="item-name"></div>
-        <div id="img-cont">
-          <img class="item-img" id="item-img" src="http://www.iconsdb.com/icons/preview/black/question-mark-xxl.png">
+      <div id="bottom-row">
+        <div class="turn-menu" id="turn-menu2">
+          <div class="menu-row" id="menu2-move"></div>
+          <div class="menu-row" id="menu2-move2"></div>
+          <div class="menu-row">Attach: Like</div>
+          <div class="menu-row">Attach: Item</div>
+          <div class="menu-row">Summon: Support</div>
+          <div class="menu-row">End Turn</div>
         </div>
-        <div class="card-effect" id="item-effect"></div>
-      </div>
-      <div class="card">
-        <div class="card-name" id="support-name"></div>
-        <!--<div class ="card-hp" id="support-hp"></div>-->
-        <div class="move-dmg" id="support-dmg"></div>
-        <div id="img-cont">
-          <img class="img" id="support-img" src="http://www.iconsdb.com/icons/preview/black/question-mark-xxl.png">
+        <div class="card" id="card2">
+          <div class="hero-name" id="hero-name2"></div>
+          <div class="card-hp" id="hero-hp2"></div>
+          <div id="img-cont">
+            <img class="img" id="hero-img2" src="http://www.iconsdb.com/icons/preview/black/question-mark-xxl.png">
+          </div>
+          <div id="hero-moveset">
+            <div class="move" id="move1">
+              <div class="move-row">
+                <div class="move-name" id="move1-name2"></div>
+                <div class="move-cost" id="move1-cost2"></div>
+                <div class="move-dmg" id="move1-dmg2"></div>
+              </div>
+              <div class="move-effect" id="move1-effect2"></div>
+            </div>
+            <div class="move" id="move2">
+              <div class="move-row">
+                <div class="move-name" id="move2-name2"></div>
+                <div class="move-cost" id="move2-cost2"></div>
+                <div class="move-dmg" id="move2-dmg2"></div>
+              </div>
+              <div class="move2b-cost" id="move2b-cost2"></div>
+              <div class="move-effect" id="move2-effect2"></div>
+            </div>
+          </div>
         </div>
-        <div class="card-effect" id="support-effect"></div>
-        <div class="card-shield">
-          <img src='/Users/adrianpardo/Documents/cs50xmiami/MemeWars/img/extras/blooddrop.png'>
-          <div id="support-hp"></div>
+        <div class="card" id="item-card2">
+          <div class="card-name" id="item-name2"></div>
+          <div id="img-cont">
+            <img class="item-img" id="item-img2" src="http://www.iconsdb.com/icons/preview/black/question-mark-xxl.png">
+          </div>
+          <div class="card-effect" id="item-effect2"></div>
+        </div>
+        <div class="card" id="support-card2">
+          <div class="card-name" id="support-name2"></div>
+          <div class="move-dmg" id="support-dmg2"></div>
+          <div id="img-cont">
+            <img class="img" id="support-img2" src="http://www.iconsdb.com/icons/preview/black/question-mark-xxl.png">
+          </div>
+          <div class="card-effect" id="support-effect2"></div>
+          <div class="card-shield">
+            <img src='/Users/adrianpardo/Documents/cs50xmiami/MemeWars/img/extras/blooddrop.png'>
+            <div class="support-hp" id="support-hp2"></div>
+          </div>
         </div>
       </div>
     </div>

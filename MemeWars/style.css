@@ -1,6 +1,26 @@
 body {
     background: #3f444a;
 }
+/* User Menu CSS */
+div.turn-menu {
+    width: 227px;
+    padding: 7px;
+    border-radius: 5px;
+    font-family: arial;
+    float: left;
+    margin-right: 10px;
+    /*margin-top: 130px;*/
+}
+.menu-row {
+    background: #ffd746;
+    text-align: center;
+    font-weight: bold;
+    width: 100%;
+    margin: 0 auto;
+    height: 27px;
+    margin-bottom: 11px;
+    line-height: 27px;
+}
 /* Hero Card CSS */
 div.card {
   border: 5px solid #ffd746;
@@ -9,7 +29,7 @@ div.card {
   border-radius: 5px;
   background: #ecd9bf;
   font-family: arial;
-  display: table;
+  /*display: table;*/
   float:left;
   margin-right: 10px;
 }
@@ -32,7 +52,7 @@ div.move-name {
     padding-bottom: 3px;
 }
 div.move-cost {
-    width: 89px;
+    width: 116px;
     float: left;
 }
 div.move2b-cost {
@@ -58,6 +78,10 @@ div.move-effect {
   display: table;
   font-size: 12px;
   padding-left: 10px;
+}
+div#bottom-row {
+    position: fixed;
+    top: 444px;
 }
 div#hero-image-cont {
   width: 100%;
@@ -89,6 +113,7 @@ div#move2b-cost {
 div.card-name {
   text-align: center;
   font-weight: bold;
+  font-family: comic sans-serif;
 }
 img.item-img {
     max-height: 111px !important;
@@ -96,10 +121,14 @@ img.item-img {
 div.card-effect {
     text-align: center;
     padding-top: 6px;
+    font-family: comic sans-serif;
 }
 
 /* Support CSS */
-div#support-hp {
+div.card-name {
+  font-family: comic sans-serif;
+}
+div.support-hp {
     float: right;
     position: absolute;
     right: 3px;
