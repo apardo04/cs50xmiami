@@ -8,7 +8,7 @@ form button { width: 18%; background: rgb(255, 215, 70); border: none; padding: 
     margin-left: 7px;
     width: 217px;
     top: 229px;
-    height: 33%;
+    height: 256px;
     position: fixed;
     background: white;
     padding-left: 0px;
@@ -49,6 +49,9 @@ div#turn-menu2 {
     cursor: pointer;
 }
 /* Hero Card CSS */
+div#card-cont {
+    float: left;
+}
 div.card {
   border: 5px solid #ffd746;
   width: 227px;
@@ -134,6 +137,19 @@ div#move2 {
 }
 div#move2b-cost {
     width: 100%;
+}
+div.likes {
+    color: #fcfdfe;
+    font-size: 19px;
+    width: 246px;
+}
+div.hero-energy {
+    float: right;
+}
+div.hero-energy img {
+    max-width: 23px;
+    padding-left: 10px;
+    margin-top: 0px;
 }
 
 /* Item Card CSS */

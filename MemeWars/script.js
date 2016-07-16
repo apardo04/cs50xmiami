@@ -1,7 +1,7 @@
 $( document ).ready(function() {
   var msg = $('#messages');
   var like = "<img src='/Users/adrianpardo/Documents/cs50xmiami/MemeWars/img/extras/like.gif'/>";
-  var user = 0;
+  var user = 2;
   var user2 = 1;
   var hero = [];
   var item = [];
@@ -36,8 +36,8 @@ $( document ).ready(function() {
   $('#move2-dmg').text(hero[user].m2_dmg);
   $('#move2-effect').html(hero[user].m2_effect);
 
-  $('#menu-move').text("Attack: " + hero[user].m1);
-  $('#menu-move2').text("Attack: " + hero[user].m2);
+  $('#menu-move').text(hero[user].m1);
+  $('#menu-move2').text(hero[user].m2);
 
   // User2 Hero JS
   $('#hero-name2').text(hero[user2].name);
@@ -62,8 +62,8 @@ $( document ).ready(function() {
   $('#move2-dmg2').text(hero[user2].m2_dmg);
   $('#move2-effect2').html(hero[user2].m2_effect);
 
-  $('#menu2-move').text("Attack: " + hero[user2].m1);
-  $('#menu2-move2').text("Attack: " + hero[user2].m2);
+  $('#menu2-move').text(hero[user2].m1);
+  $('#menu2-move2').text(hero[user2].m2);
 
   // -------- Item JS -------- //
   var dealWithIt = {name: 'Deal With It', img: '/Users/adrianpardo/Documents/cs50xmiami/MemeWars/img/Items/dealWithIt.png', effect: 'Heal +20 HP <br> Attached: +1 Like'};
@@ -88,19 +88,43 @@ $( document ).ready(function() {
   function scroll() {
     msg.animate({scrollTop: msg.prop("scrollHeight")}, 500);
   }
+  function datBoi(user) {
+    if (userTurn) {
+      if (coinFlip()) {
+        hero[user].m2_dmg += 10;
+        $('#move2-dmg').text(hero[user].m2_dmg);
+        msg.append($('<li>').text("Coin flip result: Heads"));
+        msg.append($('<li>').text(hero[user].m2 + " now does " + hero[user].m2_dmg + " damage"));
+      }
+      else {
+        msg.append($('<li>').text("Coin flip result: Tails"));
+      }
+    }
+    else {
+      if (coinFlip()) {
+        hero[user2].m2_dmg += 10;
+        $('#move2-dmg2').text(hero[user2].m2_dmg);
+        msg.append($('<li>').text("Coin flip result: Heads"));
+        msg.append($('<li>').text(hero[user2].m2 + " now does " + hero[user2].m2_dmg + " damage"));
+      }
+      else {
+        msg.append($('<li>').text("Coin flip result: Tails"));
+      }
+    }
+  }
 
   var userItem = 0;
   var userSupport = 0;
   var user2Support2 = 0;
-  var userItemAttached =  0; // How many are attached
-  var userSupportSummoned = 0; // How many are summoned
+  var userItemAttached =  0; // How many items are attached
+  var userSupportSummoned = 0; // How many supports have been summoned
   var user2Item = 0;
   var user2Support = 0;
   var user2Support2 = 0;
   var user2ItemAttached =  0;
   var user2SupportSummoned = 0;
-  var userTurn = true;
-
+  var userTurn = true; // true: user1's turn, false: user2
+  var game = true;
   msg.append($('<li>').text(hero[user].name + " is Heads."));
   msg.append($('<li>').text(hero[user2].name + " is Tails."));
   if (coinFlip()) {
@@ -112,206 +136,202 @@ $( document ).ready(function() {
     msg.append($('<li>').text(hero[user2].name + " will go first"));
   }
 
-  // User JS
-  $("#menu-like").click(function() {
-    if (userTurn) {
-      hero[user].energy += 1;
-      msg.append($('<li>').text(hero[user].name + " now has " + hero[user].energy + " like(s)"));
-      scroll();
-      userTurn = false;
-    }
-  });
-  $("#menu-move").click(function() {
-    if (userTurn) {
-      if (hero[user].energy >= hero[user].m1_energy) {
-        hero[user2].hp -= hero[user].m1_dmg;
-        $('#hero-hp2').text(hero[user2].hp);
-        msg.append($('<li>').text(hero[user].name + " used " + hero[user].m1));
-        msg.append($('<li>').text(hero[user2].name + " took " + hero[user].m1_dmg + " damage"));
-        if (user == 1) {
-          if (coinFlip()) {
-            hero[user].m2_dmg += 10;
-            $('#move2-dmg').text(hero[user].m2_dmg);
-            msg.append($('<li>').text("Coin flip result: Heads"));
-            msg.append($('<li>').text(hero[user].m2 + " now does " + hero[user].m2_dmg + " damage"));
-          }
-          else {
-            msg.append($('<li>').text("Coin flip result: Tails"));
-          }
-        }
+  if (game) {
+    // User JS
+    $("#menu-like").click(function() {
+      if (userTurn) {
+        hero[user].energy += 1;
+        $('#hero-energy').prepend(like);
+        msg.append($('<li>').text(hero[user].name + " now has " + hero[user].energy + " like(s)"));
         scroll();
         userTurn = false;
       }
-      else {
-        alert("You do not have enough likes to do this attack");
-      }
-    }
-  });
-  $("#menu-move2").click(function() {
-    if (userTurn) {
-      if (hero[user].energy >= hero[user].m2_energy) {
-        hero[user2].hp -= hero[user].m2_dmg;
-        $('#hero-hp2').text(hero[user2].hp);
-        msg.append($('<li>').text(hero[user].name + " used " + hero[user].m2));
-        msg.append($('<li>').text(hero[user2].name + " took " + hero[user].m2_dmg + " damage"));
-        scroll();
-        userTurn = false;
-      }
-      else {
-        alert("You do not have enough likes to do this attack");
-      }
-    }
-  });
-  $("#menu-item").click(function() {
-    if (userTurn) {
-      if (userItemAttached == 0) {
-        userItem = randomG(0, itemCount);
-        console.log("user item = " + userItem);
-        msg.append($('<li>').text(hero[user].name + " attached " + item[userItem].name));
-        scroll();
-        $('#item-name').text(item[userItem].name);
-        $("#item-img").attr("src", item[userItem].img);
-        $('#item-effect').html(item[userItem].effect);
-        userItemAttached++;
-        userTurn = false;
-      }
-      else {
-        alert("You can only have one item attached.");
-      }
-    }
-  });
-  $("#menu-support").click(function() {
-    if (userTurn) {
-      if (userSupportSummoned == 0) {
-        userSupport = randomG(0, supportCount);
-        console.log("user supp = " + userSupport);
-        msg.append($('<li>').text(hero[user].name + " summoned " + support[userSupport].name));
-        scroll();
-        $('#support-name').text(support[userSupport].name);
-        $('#support-hp').text(support[userSupport].hp);
-        $('#support-img').attr("src", support[userSupport].img);
-        $('#support-effect').html(support[userSupport].effect);
-        userSupportSummoned++;
-        userTurn = false;
-      }
-      else if (userSupportSummoned == 1){
-        do {
-          userSupport2 = randomG(0, supportCount);
-        } while (userSupport == userSupport2);
-        msg.append($('<li>').text(hero[user].name + " summoned " + support[userSupport2].name));
-        scroll();
-        $('#support2-name').text(support[userSupport2].name);
-        $('#support2-hp').text(support[userSupport2].hp);
-        $('#support2-img').attr("src", support[userSupport2].img);
-        $('#support2-effect').html(support[userSupport2].effect);
-        userSupportSummoned++;
-        userTurn = false;
-      }
-      else {
-        alert("You can only have 2 supports summoned.")
-      }
-    }
-  });
+    });
+    $("#menu-move").click(function() {
+      if (userTurn) {
+        if (hero[user].energy >= hero[user].m1_energy) {
+          hero[user2].hp -= hero[user].m1_dmg;
+          $('#hero-hp2').text(hero[user2].hp);
+          msg.append($('<li>').text(hero[user].name + " used " + hero[user].m1));
+          msg.append($('<li>').text(hero[user2].name + " took " + hero[user].m1_dmg + " damage"));
+          // Dat Boi's ohh shit
+          if (user == 1)
+            datBoi();
+          // Pepe's Final Form Evolve
+          if (user == 2) {
 
-  // User2 JS
-  $("#menu2-like").click(function() {
-    if (!userTurn) {
-      hero[user2].energy += 1;
-      msg.append($('<li>').text(hero[user2].name + " now has " + hero[user2].energy + " like(s)"));
-      scroll();
-      userTurn = true;
-    }
-  });
-  $("#menu2-move").click(function() {
-    if (!userTurn) {
-      if (hero[user2].energy >= hero[user2].m1_energy) {
-        hero[user].hp -= hero[user2].m1_dmg;
-        $('#hero-hp').text(hero[user].hp);
-        msg.append($('<li>').text(hero[user2].name + " used " + hero[user2].m1));
-        msg.append($('<li>').text(hero[user].name + " took " + hero[user2].m1_dmg + " damage"));
-        if (user2 == 1) {
-          if (coinFlip()) {
-            hero[user2].m2_dmg += 10;
-            $('#move2-dmg2').text(hero[user2].m2_dmg);
-            msg.append($('<li>').text("Coin flip result: Heads"));
-            msg.append($('<li>').text(hero[user2].m2 + " now does " + hero[user2].m2_dmg + " damage"));
           }
-          else {
-            msg.append($('<li>').text("Coin flip result: Tails"));
+          scroll();
+          userTurn = false;
+          if (hero[user2].hp <= 0) {
+            game = false;
+            msg.append($('<li>').text(hero[user].name + " Wins!"));
+            alert(hero[user].name + " Wins!");
           }
         }
+        else {
+          alert("You do not have enough likes to do this attack");
+        }
+      }
+    });
+    $("#menu-move2").click(function() {
+      if (userTurn) {
+        if (hero[user].energy >= hero[user].m2_energy) {
+          hero[user2].hp -= hero[user].m2_dmg;
+          $('#hero-hp2').text(hero[user2].hp);
+          msg.append($('<li>').text(hero[user].name + " used " + hero[user].m2));
+          msg.append($('<li>').text(hero[user2].name + " took " + hero[user].m2_dmg + " damage"));
+          scroll();
+          userTurn = false;
+        }
+        else {
+          alert("You do not have enough likes to do this attack");
+        }
+      }
+    });
+    $("#menu-item").click(function() {
+      if (userTurn) {
+        if (userItemAttached == 0) {
+          userItem = randomG(0, itemCount);
+          console.log("user item = " + userItem);
+          msg.append($('<li>').text(hero[user].name + " attached " + item[userItem].name));
+          scroll();
+          $('#item-name').text(item[userItem].name);
+          $("#item-img").attr("src", item[userItem].img);
+          $('#item-effect').html(item[userItem].effect);
+          userItemAttached++;
+          userTurn = false;
+        }
+        else {
+          alert("You can only have one item attached.");
+        }
+      }
+    });
+    $("#menu-support").click(function() {
+      if (userTurn) {
+        if (userSupportSummoned == 0) {
+          userSupport = randomG(0, supportCount);
+          console.log("user supp = " + userSupport);
+          msg.append($('<li>').text(hero[user].name + " summoned " + support[userSupport].name));
+          scroll();
+          $('#support-name').text(support[userSupport].name);
+          $('#support-hp').text(support[userSupport].hp);
+          $('#support-img').attr("src", support[userSupport].img);
+          $('#support-effect').html(support[userSupport].effect);
+          userSupportSummoned++;
+          userTurn = false;
+        }
+        else if (userSupportSummoned == 1){
+          do {
+            userSupport2 = randomG(0, supportCount);
+          } while (userSupport == userSupport2);
+          msg.append($('<li>').text(hero[user].name + " summoned " + support[userSupport2].name));
+          scroll();
+          $('#support2-name').text(support[userSupport2].name);
+          $('#support2-hp').text(support[userSupport2].hp);
+          $('#support2-img').attr("src", support[userSupport2].img);
+          $('#support2-effect').html(support[userSupport2].effect);
+          userSupportSummoned++;
+          userTurn = false;
+        }
+        else {
+          alert("You can only have 2 supports summoned.")
+        }
+      }
+    });
+
+    // User2 JS
+    $("#menu2-like").click(function() {
+      if (!userTurn) {
+        hero[user2].energy += 1;
+        $('#hero-energy2').prepend(like);
+        msg.append($('<li>').text(hero[user2].name + " now has " + hero[user2].energy + " like(s)"));
         scroll();
         userTurn = true;
       }
-      else {
-        alert("You do not have enough likes to do this attack");
+    });
+    $("#menu2-move").click(function() {
+      if (!userTurn) {
+        if (hero[user2].energy >= hero[user2].m1_energy) {
+          hero[user].hp -= hero[user2].m1_dmg;
+          $('#hero-hp').text(hero[user].hp);
+          msg.append($('<li>').text(hero[user2].name + " used " + hero[user2].m1));
+          msg.append($('<li>').text(hero[user].name + " took " + hero[user2].m1_dmg + " damage"));
+          if (user2 == 1)
+            datBoi();
+          scroll();
+          userTurn = true;
+        }
+        else {
+          alert("You do not have enough likes to do this attack");
+        }
       }
-    }
-  });
-  $("#menu2-move2").click(function() {
-    if (!userTurn) {
-      if (hero[user2].energy >= hero[user2].m2_energy) {
-        hero[user].hp -= hero[user2].m2_dmg;
-        $('#hero-hp').text(hero[user].hp);
-        msg.append($('<li>').text(hero[user2].name + " used " + hero[user2].m2));
-        msg.append($('<li>').text(hero[user].name + " took " + hero[user2].m2_dmg + " damage"));
-        scroll();
-        userTurn = true;
+    });
+    $("#menu2-move2").click(function() {
+      if (!userTurn) {
+        if (hero[user2].energy >= hero[user2].m2_energy) {
+          hero[user].hp -= hero[user2].m2_dmg;
+          $('#hero-hp').text(hero[user].hp);
+          msg.append($('<li>').text(hero[user2].name + " used " + hero[user2].m2));
+          msg.append($('<li>').text(hero[user].name + " took " + hero[user2].m2_dmg + " damage"));
+          scroll();
+          userTurn = true;
+        }
+        else {
+          alert("You do not have enough likes to do this attack");
+        }
       }
-      else {
-        alert("You do not have enough likes to do this attack");
+    });
+    $("#menu2-item").click(function() {
+      if (!userTurn) {
+        if (user2ItemAttached == 0) {
+          user2Item = randomG(0, itemCount);
+          console.log("user2 item = " + user2Item);
+          msg.append($('<li>').text(hero[user2].name + " attached " + item[user2Item].name));
+          scroll();
+          $('#item-name2').text(item[user2Item].name);
+          $("#item-img2").attr("src", item[user2Item].img);
+          $('#item-effect2').html(item[user2Item].effect);
+          user2ItemAttached++;
+          userTurn = true;
+        }
+        else {
+          alert("You can only have one item attached.");
+        }
       }
-    }
-  });
-  $("#menu2-item").click(function() {
-    if (!userTurn) {
-      if (user2ItemAttached == 0) {
-        user2Item = randomG(0, itemCount);
-        console.log("user2 item = " + user2Item);
-        msg.append($('<li>').text(hero[user2].name + " attached " + item[user2Item].name));
-        scroll();
-        $('#item-name2').text(item[user2Item].name);
-        $("#item-img2").attr("src", item[user2Item].img);
-        $('#item-effect2').html(item[user2Item].effect);
-        user2ItemAttached++;
-        userTurn = true;
+    });
+    $("#menu2-support").click(function() {
+      if (!userTurn) {
+        if (user2SupportSummoned == 0) {
+          user2Support = randomG(0, supportCount);
+          console.log("user2 supp = " + user2Support);
+          msg.append($('<li>').text(hero[user2].name + " summoned " + support[user2Support].name));
+          scroll();
+          $('#support-name2').text(support[user2Support].name);
+          $('#support-hp2').text(support[user2Support].hp);
+          $('#support-img2').attr("src", support[user2Support].img);
+          $('#support-effect2').html(support[user2Support].effect);
+          user2SupportSummoned++;
+          userTurn = true;
+        }
+        else if (user2SupportSummoned == 1){
+          do {
+            user2Support2 = randomG(0, supportCount);
+            console.log("user2 supp2 = " + user2Support2);
+          } while (userSupport == userSupport2);
+          msg.append($('<li>').text(hero[user2].name + " summoned " + support[user2Support2].name));
+          scroll();
+          $('#support2-name2').text(support[user2Support2].name);
+          $('#support2-hp2').text(support[user2Support2].hp);
+          $('#support2-img2').attr("src", support[user2Support2].img);
+          $('#support2-effect2').html(support[user2Support2].effect);
+          user2SupportSummoned++;
+          userTurn = true;
+        }
+        else {
+          alert("You can only have 2 supports summoned.")
+        }
       }
-      else {
-        alert("You can only have one item attached.");
-      }
-    }
-  });
-  $("#menu2-support").click(function() {
-    if (!userTurn) {
-      if (user2SupportSummoned == 0) {
-        user2Support = randomG(0, supportCount);
-        console.log("user2 supp = " + user2Support);
-        msg.append($('<li>').text(hero[user2].name + " summoned " + support[user2Support].name));
-        scroll();
-        $('#support-name2').text(support[user2Support].name);
-        $('#support-hp2').text(support[user2Support].hp);
-        $('#support-img2').attr("src", support[user2Support].img);
-        $('#support-effect2').html(support[user2Support].effect);
-        user2SupportSummoned++;
-        userTurn = true;
-      }
-      else if (user2SupportSummoned == 1){
-        do {
-          user2Support2 = randomG(0, supportCount);
-          console.log("user2 supp2 = " + user2Support2);
-        } while (userSupport == userSupport2);
-        msg.append($('<li>').text(hero[user2].name + " summoned " + support[user2Support2].name));
-        scroll();
-        $('#support2-name2').text(support[user2Support2].name);
-        $('#support2-hp2').text(support[user2Support2].hp);
-        $('#support2-img2').attr("src", support[user2Support2].img);
-        $('#support2-effect2').html(support[user2Support2].effect);
-        user2SupportSummoned++;
-        userTurn = true;
-      }
-      else {
-        alert("You can only have 2 supports summoned.")
-      }
-    }
-  });
+    });
+  }
 });
