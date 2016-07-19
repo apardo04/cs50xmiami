@@ -37,11 +37,10 @@ void load_pass(int stationId, int stationCap, bool status, int &passCur, int pas
             if (stationId < stationCap) {
                 waiting = randomG(passCap);
                 cout << waiting << endl;
-                if (waiting + passCur >= passCap) {
-                    cout << (waiting + passCur) - passCap << " passengers loaded\n";
+                if (waiting + passCur > passCap) {
+                    cout << passCap - passCur << " passengers loaded\n";
                     passCur = passCap;
                     cout << passCur << " passengers on the bus.\n";
-                    cout << "loading true\n";
                 }
                 else {
                     passCur += waiting;
@@ -64,10 +63,10 @@ void bus_start(int &stationId, int stationCap, bool &status) {
 
 int main()
 {
+    srand(time(NULL));
     int stationCap, passCap;
     int passCur = 0;
     int stationId = 1;
-    // Bus is stopped when false.
     bool status = false;
     string input = "";
 
