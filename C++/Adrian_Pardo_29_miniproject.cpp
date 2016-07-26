@@ -73,7 +73,7 @@ void bus_start(int &stationId, int stationCap, bool &status) {
 int main()
 {
     srand(time(NULL));
-    int stationCap = 0, passCap = 0, passCur = 0;
+    int stationCap, passCap, passCur;
     int stationId = 1;
     bool status = false;
     bool running = true;

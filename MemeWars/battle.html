@@ -6,7 +6,9 @@
     <link rel="stylesheet" href="/Users/adrianpardo/Documents/cs50xmiami/MemeWars/style.css">
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <!--<script src="/socket.io/socket.io.js"></script>-->
+    <script type='text/javascript' src="file:///Users/adrianpardo/Documents/cs50xmiami/MemeWars/cards.js"></script>
     <script type='text/javascript' src="file:///Users/adrianpardo/Documents/cs50xmiami/MemeWars/script.js"></script>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <!--<script>
       var socket = io();
@@ -26,15 +28,22 @@
         <div class="turn-menu" id="turn-menu1">
           <div class="menu-row" id="menu-move"></div>
           <div class="menu-row" id="menu-move2"></div>
-          <div class="menu-row" id="menu-item">Attach: Item</div>
-          <div class="menu-row" id="menu-1support">Summon: 1 Like Support</div>
-          <div class="menu-row" id="menu-3support">Summon: 3 Like Support</div>
+          <div class="menu-row" id="menu-item">2 Like: Item Equip</div>
+          <div class="menu-row" id="menu-1support">1 Like: Support Summon</div>
+          <div class="menu-row" id="menu-3support">3 Like: Support Summon</div>
           <div class="menu-row" id="menu-end">End Turn</div>
         </div>
         <div id="card-cont">
           <div class="card">
             <div class="hero-name" id="hero-name"></div>
-            <div class="card-hp" id="hero-hp"></div>
+            <div class="shield">
+              <img src='/Users/adrianpardo/Documents/cs50xmiami/MemeWars/img/extras/shieldHp.png'>
+              <div class="card-armor" id="hero-armor">0</div>
+            </div>
+            <div class="shield">
+              <img src='/Users/adrianpardo/Documents/cs50xmiami/MemeWars/img/extras/shield.png'>
+              <div class="card-hp" id="hero-hp"></div>
+            </div>
             <div id="img-cont">
               <img class="img" id="hero-img" src="/Users/adrianpardo/Documents/cs50xmiami/MemeWars/img/extras/questionMark.png">
             </div>
@@ -59,8 +68,7 @@
             </div>
           </div>
           <div class="likes">
-            Likes:
-            <div class="hero-energy" id="hero-energy"></div>
+            <div class="hero-energy" id="hero-energy"><span>Likes:</span></div>
           </div>
         </div>
         <div class="card" id="item-card">
@@ -103,16 +111,16 @@
         <div class="turn-menu" id="turn-menu2">
           <div class="menu-row" id="menu2-move"></div>
           <div class="menu-row" id="menu2-move2"></div>
-          <div class="menu-row" id="menu2-item">Attach: Item</div>
-          <div class="menu-row" id="menu2-1support">Summon: 1 Like Support</div>
-          <div class="menu-row" id="menu2-3support">Summon: 3 Like Support</div>
+          <div class="menu-row" id="menu2-item">2 Like: Item Equip</div>
+          <div class="menu-row" id="menu2-1support">1 Like: Support Summon</div>
+          <div class="menu-row" id="menu2-3support">3 Like: Support Summon</div>
           <div class="menu-row" id="menu2-end">End Turn</div>
         </div>
+        <div class="likes">
+          <div class="hero-energy" id="hero-energy2"><span>Likes:</span></div>
+        </div>
         <div id="card-cont">
-          <div class="likes">
-            Likes:
-            <div class="hero-energy" id="hero-energy2"></div>
-          </div>
+
           <div class="card" id="card2">
             <div class="hero-name" id="hero-name2"></div>
             <div class="card-hp" id="hero-hp2"></div>

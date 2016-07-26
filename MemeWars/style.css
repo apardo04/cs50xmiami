@@ -34,7 +34,7 @@ div.turn-menu {
     /*margin-top: 130px;*/
 }
 div#turn-menu2 {
-    bottom: -72px;
+    bottom: -83px;
     position: relative;
 }
 .menu-row {
@@ -68,10 +68,36 @@ div.hero-name {
   font-weight: bold;
   font-size: 19px;
 }
+div.shield {
+    position: relative;
+}
+div.shield img {
+    width: 41px;
+    float: right;
+}
+div.card-armor {
+    position: absolute;
+    right: 57px;
+    font-size: 17px;
+    top: 10px;
+    color: white;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    font-weight: 900;
+    z-index: 99;
+}
 div.card-hp {
+    position: absolute;
+    right: 7px;
+    font-size: 17px;
+    top: 10px;
+    color: white;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    font-weight: 900;
+}
+/*div.card-hp {
   float: right;
   font-weight: bold;
-}
+}*/
 div.move{
   width: 100%;
   padding-top: 7px;
@@ -111,7 +137,8 @@ div.move-effect {
 }
 div#bottom-row {
     position: fixed;
-    top: 444px;
+    top: 434px;
+    width: 100%;
 }
 div#hero-image-cont {
   width: 100%;
@@ -144,12 +171,17 @@ div.likes {
     width: 246px;
 }
 div.hero-energy {
-    float: right;
+    float: left;
 }
 div.hero-energy img {
     max-width: 23px;
     padding-left: 10px;
     margin-top: 0px;
+}
+div#hero-energy2 {
+    position: absolute;
+    left: 252px;
+    top: -28px;
 }
 
 /* Item Card CSS */

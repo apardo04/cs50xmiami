@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1468990880 source:/Users/adrianpardo/Documents/cs50xmiami/C++/mini_project_bus/main.cpp
+	<iostream>
+	<sstream>
+	<string>
+
