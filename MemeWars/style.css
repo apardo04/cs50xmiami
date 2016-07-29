@@ -68,7 +68,7 @@ div.hero-name {
   font-weight: bold;
   font-size: 19px;
 }
-div.shield {
+/*div.shield {
     position: relative;
 }
 div.shield img {
@@ -93,11 +93,15 @@ div.card-hp {
     color: white;
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
     font-weight: 900;
+}*/
+span.hp {
+    font-size: 15px;
 }
-/*div.card-hp {
+div.card-hp {
   float: right;
   font-weight: bold;
-}*/
+  font-size: 11px;
+}
 div.move{
   width: 100%;
   padding-top: 7px;
@@ -149,7 +153,7 @@ div#img-cont img {
   width: 100%;
   margin: 0 auto;
   display:  table;
-  background: #7d6b6b;
+  background: #ffffff;
   border: 2px solid #565656;
   max-width: 210px;
   max-height: 159px;
@@ -215,10 +219,12 @@ div.support-hp {
     1px -1px 0 #000,
     -1px 1px 0 #000,
     1px 1px 0 #000;
+    display: none;
 }
 .card-shield img {
     width: 22px;
     float: right;
+    display: none;
 }
 .card-shield {
     position: relative;

@@ -9,6 +9,7 @@
     <script type='text/javascript' src="file:///Users/adrianpardo/Documents/cs50xmiami/MemeWars/cards.js"></script>
     <script type='text/javascript' src="file:///Users/adrianpardo/Documents/cs50xmiami/MemeWars/script.js"></script>
 
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <!--<script>
       var socket = io();
@@ -37,12 +38,15 @@
           <div class="card">
             <div class="hero-name" id="hero-name"></div>
             <div class="shield">
-              <img src='/Users/adrianpardo/Documents/cs50xmiami/MemeWars/img/extras/shieldHp.png'>
-              <div class="card-armor" id="hero-armor">0</div>
+              <!--<img src='/Users/adrianpardo/Documents/cs50xmiami/MemeWars/img/extras/shieldHp.png'>
+              <div class="card-armor" id="hero-armor">0</div>-->
             </div>
             <div class="shield">
-              <img src='/Users/adrianpardo/Documents/cs50xmiami/MemeWars/img/extras/shield.png'>
-              <div class="card-hp" id="hero-hp"></div>
+              <!--<img src='/Users/adrianpardo/Documents/cs50xmiami/MemeWars/img/extras/shield.png'>-->
+              <div class="card-hp">
+                HP
+                <span class="hp" id="hero-hp"></span>
+              </div>
             </div>
             <div id="img-cont">
               <img class="img" id="hero-img" src="/Users/adrianpardo/Documents/cs50xmiami/MemeWars/img/extras/questionMark.png">
@@ -123,7 +127,10 @@
 
           <div class="card" id="card2">
             <div class="hero-name" id="hero-name2"></div>
-            <div class="card-hp" id="hero-hp2"></div>
+            <div class="card-hp">
+              HP
+              <span class="hp" id="hero-hp2"></span>
+            </div>
             <div id="img-cont">
               <img class="img" id="hero-img2" src="/Users/adrianpardo/Documents/cs50xmiami/MemeWars/img/extras/questionMark.png">
             </div>

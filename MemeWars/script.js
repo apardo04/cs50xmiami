@@ -91,22 +91,26 @@ $( document ).ready(function() {
   function evolve() {
     if (userTurn) {
       user++;
-      if (user == 3)
-        hero[user].hp += (hero[user - 1].hp - 120);
+      hero[user].hp += (hero[user - 1].hp - hero[user - 1].max_hp);
+      hero[user].max_hp += (hero[user - 1].hp - hero[user - 1].max_hp);
       hero[user].energy = hero[user - 1].energy;
       hero[user].energy_left = hero[user - 1].energy_left;
       msg.append($('<li>').text(hero[user - 1].name + " has evolved into " + hero[user].name));
       userCardPrint();
+      console.log("evolve steam sale argument = " + $('#support-name').text() == "Steam Sale" || $('#support2-name').text() == "Steam Sale" );
+      if ($('#support-name').text() == "Steam Sale" || $('#support2-name').text() == "Steam Sale" ) // to do
+        steamSale();
     }
     else {
       user2++;
-      if (user2 == 3) {
-        hero[user2].hp += (hero[user2 - 1].hp - 120);
+      hero[user2].hp += (hero[user2 - 1].hp - hero[user2 - 1].max_hp);
+      hero[user2].max_hp += (hero[user2 - 1].hp - hero[user2 - 1].max_hp);
       hero[user2].energy = hero[user2 - 1].energy;
       hero[user2].energy_left = hero[user2 - 1].energy_left;
       msg.append($('<li>').text(hero[user2 - 1].name + " has evolved into " + hero[user2].name));
       user2CardPrint();
-      }
+      if ($('#support-name2').text() == "Steam Sale" || $('#support2-name2').text() == "Steam Sale" ) // to do
+        steamSale();
     }
   }
   function datBoi() {
@@ -133,6 +137,21 @@ $( document ).ready(function() {
       }
     }
   }
+  function items(num) {
+    var tempUser = (userTurn) ? user : user2;
+    var idNum = (userTurn) ? '' : '2';
+      switch (num) {
+        case 0:
+          hero[tempUser].hp += (hero[tempUser].max_hp - hero[tempUser].hp >= 20) ? 20 : hero[tempUser].max_hp - hero[tempUser].hp;
+          $('#hero-hp' + idNum).text(hero[tempUser].hp);
+          if (hero[tempUser].energy < 6) {
+            hero[tempUser].energy++;
+            hero[tempUser].energy_left++;
+            $('#hero-energy' + idNum).append(like);
+          }
+          break;
+      }
+    }
   function extraDmgSupp(supp) {
       switch (supp) {
         case 0:
@@ -143,6 +162,37 @@ $( document ).ready(function() {
           break;
       }
   }
+  function steamSale() {
+    if (userTurn) {
+      hero[user].m1_energy--;
+      hero[user].m2_energy--;
+      $("#move1-cost img").remove();
+      $("#move2b-cost img").remove();
+      $("#move2-cost img").remove();
+      userCardPrint();
+    }
+    else {
+      hero[user2].m1_energy--;
+      hero[user2].m2_energy--;
+      $("#move1-cost2 img").remove();
+      $("#move2b-cost2 img").remove();
+      $("#move2-cost2 img").remove();
+      user2CardPrint();
+      }
+    }
+  function surpriseMotherfucker() {
+    if (userTurn) {
+      hero[user2].hp -= 30;
+      msg.append($('<li>').text(hero[user2].name + " took 30 damage"));
+      $('#hero-hp2').text(hero[user2].hp);
+    }
+    else {
+      hero[user].hp -= 30;
+      msg.append($('<li>').text(hero[user].name + " took 30 damage"));
+      $('#hero-hp').text(hero[user].hp);
+    }
+  }
+
 
   // ------- Local Play-------- ///
   userCardPrint();
@@ -173,10 +223,9 @@ $( document ).ready(function() {
       if (userTurn) {
         if (hero[user].energy_left >= hero[user].m1_energy) {
           msg.append($('<li>').text(hero[user].name + " used " + hero[user].m1));
-          if ((userSuppsSummoned > 0 && support[userSupp].name == support[0].name) || (userSuppsSummoned == 2 && support[userSupp2].name == support[0].name))
+          if ((userSuppsSummoned > 0 && $('#support-name').text() == support[0].name) || (userSuppsSummoned == 2 && $('#support2-name').text() == support[0].name))
             extraDmgSupp(0);
-          console.log(userSuppsSummoned == 1 && support[userSupp].name == support[1].name);
-          if (userSuppsSummoned == 1 && support[userSupp].name == support[1].name)
+          if (userSuppsSummoned == 1 && $('#support-name').text() == support[1].name)
             extraDmgSupp(1);
           if (user == 2 || user == 3) // Pepe's 'Feels Bad Man' / Final Form Pepe's 'You Fool'
             extraDmgTurn();
@@ -204,9 +253,9 @@ $( document ).ready(function() {
       if (userTurn) {
         if (hero[user].energy_left >= hero[user].m2_energy) {
           msg.append($('<li>').text(hero[user].name + " used " + hero[user].m2));
-          if ((userSuppsSummoned > 0 && support[userSupp].name == support[0].name) || (userSuppsSummoned == 2 && support[userSupp2].name == support[0].name))
+          if ((userSuppsSummoned > 0 && $('#support-name').text() == support[0].name) || (userSuppsSummoned == 2 && $('#support2-name').text() == support[0].name))
             extraDmgSupp(0);
-          if (userSuppsSummoned == 1 && support[userSupp].name == support[1].name)
+          if (userSuppsSummoned == 1 && $('#support-name').text() == support[1].name)
             extraDmgSupp(1);
           msg.append($('<li>').text(hero[user2].name + " took " + (hero[user].m2_dmg + extraDmg) + " damage"));
           hero[user2].hp -= hero[user].m2_dmg + extraDmg;
@@ -232,12 +281,15 @@ $( document ).ready(function() {
       if (hero[user].energy_left >= 2) {
         if (userItemsAttached == 0) {
           userItem = randomG(0, itemCount);
+          userItem = 0;
           msg.append($('<li>').text(hero[user].name + " attached " + item[userItem].name));
           scroll();
           $('#item-name').text(item[userItem].name);
           $("#item-img").attr("src", item[userItem].img);
           $('#item-effect').html(item[userItem].effect);
           hero[user].energy_left -= 2;
+          if (userItem == 0)
+            items(0);
           userItemsAttached++;
         }
         else {
@@ -309,7 +361,12 @@ $( document ).ready(function() {
           $('#support-hp').text(support3[userSupp].hp);
           $('#support-img').attr("src", support3[userSupp].img);
           $('#support-effect').html(support3[userSupp].effect);
-          hero[user2].energy_left -= 3;
+          hero[user].energy_left -= 3;
+          if (userSupp == 0) {
+            surpriseMotherfucker();
+          }
+          if (userSupp == 1)
+            steamSale();
           userSuppsSummoned++;
         }
         else if (userSuppsSummoned == 1) {
@@ -322,7 +379,12 @@ $( document ).ready(function() {
           $('#support2-hp').text(support3[userSupp2].hp);
           $('#support2-img').attr("src", support3[userSupp2].img);
           $('#support2-effect').html(support3[userSupp2].effect);
-          hero[user2].energy_left -= 3;
+          hero[user].energy_left -= 3;
+          if (userSupp2 == 0) {
+            surpriseMotherfucker();
+          }
+          if (userSupp2 == 1)
+            steamSale();
           userSuppsSummoned++;
         }
         else {
@@ -345,10 +407,12 @@ $( document ).ready(function() {
       if (!userTurn) {
         if (hero[user2].energy_left >= hero[user2].m1_energy) {
           msg.append($('<li>').text(hero[user2].name + " used " + hero[user2].m1));
-          if ((user2SuppsSummoned > 0 && support[user2Supp].name == support[0].name) || (user2SuppsSummoned == 2 && support[user2Supp2].name == support[0].name))
-            extraDmgSupp(0);
-          if (user2SuppsSummoned == 1 && support[user2Supp].name == support[1].name)
-            extraDmgSupp(1);
+          if ((user2SuppsSummoned > 0 && $('#support-name2').text() == support[0].name) || (user2SuppsSummoned == 2 && $('#support2-name2').text() == support[0].name)){
+            console.log("user2 megusta triggered");
+            extraDmgSupp(0);}
+          if (user2SuppsSummoned == 1 && $('#support-name2').text() == support[1].name){
+            console.log("forever alone user2 triggered");
+            extraDmgSupp(1);}
           if (user2 == 2 || user2 == 3) // Pepe's 'Feels Bad Man' / Final Form Pepe's 'You Fool'
             extraDmgTurn();
           msg.append($('<li>').text(hero[user].name + " took " + (hero[user2].m1_dmg + extraDmg) + " damage"));
@@ -375,8 +439,12 @@ $( document ).ready(function() {
       if (!userTurn) {
         if (hero[user2].energy_left >= hero[user2].m2_energy) {
           msg.append($('<li>').text(hero[user2].name + " used " + hero[user2].m2));
-          if ((user2SuppsSummoned > 0 && support[user2Supp].name == support[0].name) || (user2SuppsSummoned == 2 && support[user2Supp2].name == support[0].name))
-            extraDmgSupp(0);
+          if ((user2SuppsSummoned > 0 && $('#support-name2').text() == support[0].name) || (user2SuppsSummoned == 2 && $('#support2-name2').text() == support[0].name)){
+            console.log("user2 megusta triggered");
+            extraDmgSupp(0);}
+          if (user2SuppsSummoned == 1 && $('#support-name2').text() == support[1].name){
+            console.log("forever alone user2 triggered");
+            extraDmgSupp(1);}
           msg.append($('<li>').text(hero[user].name + " took " + (hero[user2].m2_dmg + extraDmg) + " damage"));
           hero[user].hp -= hero[user2].m2_dmg + extraDmg;
           $('#hero-hp').text(hero[user].hp);
@@ -401,6 +469,7 @@ $( document ).ready(function() {
       if (hero[user2].energy_left >= 2) {
         if (user2ItemsAttached == 0) {
           user2Item = randomG(0, itemCount);
+          user2Item = 0;
           console.log("user2 item = " + user2Item);
           msg.append($('<li>').text(hero[user2].name + " attached " + item[user2Item].name));
           scroll();
@@ -408,6 +477,8 @@ $( document ).ready(function() {
           $("#item-img2").attr("src", item[user2Item].img);
           $('#item-effect2').html(item[user2Item].effect);
           hero[user2].energy_left -= 2;
+          if (user2Item == 0)
+            items(0);
           user2ItemsAttached++;
         }
         else {
@@ -479,6 +550,11 @@ $( document ).ready(function() {
           $('#support-img2').attr("src", support3[user2Supp].img);
           $('#support-effect2').html(support3[user2Supp].effect);
           hero[user2].energy_left -= 3;
+          if (user2Supp == 0) {
+            surpriseMotherfucker();
+          }
+          if (user2Supp == 1)
+            steamSale();
           user2SuppsSummoned++;
         }
         else if (user2SuppsSummoned == 1){
@@ -492,6 +568,11 @@ $( document ).ready(function() {
           $('#support2-img2').attr("src", support3[user2Supp2].img);
           $('#support2-effect2').html(support3[user2Supp2].effect);
           hero[user2].energy_left -= 3;
+          if (user2Supp2 == 0) {
+            surpriseMotherfucker();
+          }
+          if (user2Supp2 == 1)
+            steamSale();
           user2SuppsSummoned++;
         }
         else {
