@@ -1,8 +1,8 @@
 $( document ).ready(function() {
   var msg = $('#messages');
   var userItem = 0;
-  var userSupp = 0;
-  var userSupp2 = 0;
+  var userSupp = 0;  // Slot 1 Support
+  var userSupp2 = 0; // Slot 2 Support
   var userItemsAttached =  0; // How many items are attached
   var userSuppsSummoned = 0; // How many supports have been summoned
   var userSuppDmg = 0;
@@ -15,6 +15,12 @@ $( document ).ready(function() {
   var userTurn; // true: user1's turn, false: user2
   var attacked = false; // False: Hasn't attacked this turn
   var extraDmg = 0; // Exrta damage for current turn
+  var tempUser; // Makes user variable dynamic
+  var idNum; // Makes id # dynamic
+  var tempItem // Makes userItem dynamic
+  var tempOpp;
+  var idOppNum;
+  var tempOppItem;
 
   // ------- Local Play Functions-------- ///
   function coinFlip() {
@@ -25,6 +31,14 @@ $( document ).ready(function() {
   }
   function scroll() {
     msg.animate({scrollTop: msg.prop("scrollHeight")}, 500);
+  }
+  function tempUserCheck() {
+    tempUser = (userTurn) ? user : user2;
+    idNum = (userTurn) ? '' : '2';
+    tempItem = (userTurn) ? userItem : user2Item;
+    tempOpp = (!userTurn) ? user : user2;
+    idOppNum = (!userTurn) ? '' : '2';
+    tempOppItem = (!userTurn) ? user : user2;
   }
   function endTurn() {
     if (userTurn) {
@@ -137,30 +151,44 @@ $( document ).ready(function() {
       }
     }
   }
-  function items(num) {
+  function items() {
+    tempUserCheck();
+    switch (tempItem) {
+      case 0:
+        hero[tempUser].hp += (hero[tempUser].max_hp - hero[tempUser].hp >= 20) ? 20 : hero[tempUser].max_hp - hero[tempUser].hp;
+        $('#hero-hp' + idNum).text(hero[tempUser].hp);
+        if (hero[tempUser].energy < 6) {
+          hero[tempUser].energy++;
+          hero[tempUser].energy_left++;
+          $('#hero-energy' + idNum).append(like);
+        }
+        break;
+      case 1:
+        hero[tempUser].armor += 10;
+        console.log(hero[tempUser].armor);
+        if (hero[tempOpp].energy > 0) {
+          hero[tempOpp].energy--;
+          $('#hero-energy' + idOppNum + ' img:last-child').remove()
+        }
+    }
+  }
+  function supports(supp, summoned) {
     var tempUser = (userTurn) ? user : user2;
     var idNum = (userTurn) ? '' : '2';
-      switch (num) {
-        case 0:
-          hero[tempUser].hp += (hero[tempUser].max_hp - hero[tempUser].hp >= 20) ? 20 : hero[tempUser].max_hp - hero[tempUser].hp;
+    switch (supp) {
+      case 0:
+        extraDmg += 10;
+        if (summoned) {
+          hero[tempUser].hp += 10;
+          hero[tempUser].max_hp += 10;
           $('#hero-hp' + idNum).text(hero[tempUser].hp);
-          if (hero[tempUser].energy < 6) {
-            hero[tempUser].energy++;
-            hero[tempUser].energy_left++;
-            $('#hero-energy' + idNum).append(like);
-          }
-          break;
-      }
+          msg.append($('<li>').text(hero[tempUser].name + " now has " + hero[tempUser].hp + " HP"));
+        }
+        break;
+      case 1:
+        extraDmg += 20;
+        break;
     }
-  function extraDmgSupp(supp) {
-      switch (supp) {
-        case 0:
-          extraDmg += 10;
-          break;
-        case 1:
-          extraDmg += 20;
-          break;
-      }
   }
   function steamSale() {
     if (userTurn) {
@@ -224,9 +252,9 @@ $( document ).ready(function() {
         if (hero[user].energy_left >= hero[user].m1_energy) {
           msg.append($('<li>').text(hero[user].name + " used " + hero[user].m1));
           if ((userSuppsSummoned > 0 && $('#support-name').text() == support[0].name) || (userSuppsSummoned == 2 && $('#support2-name').text() == support[0].name))
-            extraDmgSupp(0);
+            supports(0); // Me Gusta
           if (userSuppsSummoned == 1 && $('#support-name').text() == support[1].name)
-            extraDmgSupp(1);
+            supports(1); // Forever Alone
           if (user == 2 || user == 3) // Pepe's 'Feels Bad Man' / Final Form Pepe's 'You Fool'
             extraDmgTurn();
           msg.append($('<li>').text(hero[user2].name + " took " + (hero[user].m1_dmg + extraDmg) + " damage"));
@@ -254,9 +282,9 @@ $( document ).ready(function() {
         if (hero[user].energy_left >= hero[user].m2_energy) {
           msg.append($('<li>').text(hero[user].name + " used " + hero[user].m2));
           if ((userSuppsSummoned > 0 && $('#support-name').text() == support[0].name) || (userSuppsSummoned == 2 && $('#support2-name').text() == support[0].name))
-            extraDmgSupp(0);
+            supports(0);
           if (userSuppsSummoned == 1 && $('#support-name').text() == support[1].name)
-            extraDmgSupp(1);
+            supports(1);
           msg.append($('<li>').text(hero[user2].name + " took " + (hero[user].m2_dmg + extraDmg) + " damage"));
           hero[user2].hp -= hero[user].m2_dmg + extraDmg;
           $('#hero-hp2').text(hero[user2].hp);
@@ -281,15 +309,13 @@ $( document ).ready(function() {
       if (hero[user].energy_left >= 2) {
         if (userItemsAttached == 0) {
           userItem = randomG(0, itemCount);
-          userItem = 0;
           msg.append($('<li>').text(hero[user].name + " attached " + item[userItem].name));
           scroll();
           $('#item-name').text(item[userItem].name);
           $("#item-img").attr("src", item[userItem].img);
           $('#item-effect').html(item[userItem].effect);
           hero[user].energy_left -= 2;
-          if (userItem == 0)
-            items(0);
+          items();
           userItemsAttached++;
         }
         else {
@@ -314,12 +340,10 @@ $( document ).ready(function() {
           $('#support-effect').html(support[userSupp].effect);
           hero[user].energy_left--;
           if (userSupp == 0) {
-            hero[user].hp += 10;
-            $('#hero-hp').text(hero[user].hp);
-            msg.append($('<li>').text(hero[user].name + " now has " + hero[user].hp + " HP"));
+            supports(0, true);
           }
           if (userSupp == 1)
-            extraDmgSupp(1);
+            supports(1);
           userSuppsSummoned++;
         }
         else if (userSuppsSummoned == 1){
@@ -334,11 +358,8 @@ $( document ).ready(function() {
           $('#support2-img').attr("src", support[userSupp2].img);
           $('#support2-effect').html(support[userSupp2].effect);
           hero[user].energy_left--;
-          if (userSupp2 == 0) {
-            hero[user].hp += 10;
-            $('#hero-hp').text(hero[user].hp);
-            msg.append($('<li>').text(hero[user].name + " now has " + hero[user].hp + " HP"));
-          }
+          if (userSupp2 == 0)
+            supports(0,true);
           userSuppsSummoned++;
         }
         else {
@@ -409,10 +430,9 @@ $( document ).ready(function() {
           msg.append($('<li>').text(hero[user2].name + " used " + hero[user2].m1));
           if ((user2SuppsSummoned > 0 && $('#support-name2').text() == support[0].name) || (user2SuppsSummoned == 2 && $('#support2-name2').text() == support[0].name)){
             console.log("user2 megusta triggered");
-            extraDmgSupp(0);}
+            supports(0);}
           if (user2SuppsSummoned == 1 && $('#support-name2').text() == support[1].name){
-            console.log("forever alone user2 triggered");
-            extraDmgSupp(1);}
+            supports(1);}
           if (user2 == 2 || user2 == 3) // Pepe's 'Feels Bad Man' / Final Form Pepe's 'You Fool'
             extraDmgTurn();
           msg.append($('<li>').text(hero[user].name + " took " + (hero[user2].m1_dmg + extraDmg) + " damage"));
@@ -441,10 +461,10 @@ $( document ).ready(function() {
           msg.append($('<li>').text(hero[user2].name + " used " + hero[user2].m2));
           if ((user2SuppsSummoned > 0 && $('#support-name2').text() == support[0].name) || (user2SuppsSummoned == 2 && $('#support2-name2').text() == support[0].name)){
             console.log("user2 megusta triggered");
-            extraDmgSupp(0);}
+            supports(0);}
           if (user2SuppsSummoned == 1 && $('#support-name2').text() == support[1].name){
             console.log("forever alone user2 triggered");
-            extraDmgSupp(1);}
+            supports(1);}
           msg.append($('<li>').text(hero[user].name + " took " + (hero[user2].m2_dmg + extraDmg) + " damage"));
           hero[user].hp -= hero[user2].m2_dmg + extraDmg;
           $('#hero-hp').text(hero[user].hp);
@@ -469,7 +489,6 @@ $( document ).ready(function() {
       if (hero[user2].energy_left >= 2) {
         if (user2ItemsAttached == 0) {
           user2Item = randomG(0, itemCount);
-          user2Item = 0;
           console.log("user2 item = " + user2Item);
           msg.append($('<li>').text(hero[user2].name + " attached " + item[user2Item].name));
           scroll();
@@ -477,8 +496,7 @@ $( document ).ready(function() {
           $("#item-img2").attr("src", item[user2Item].img);
           $('#item-effect2').html(item[user2Item].effect);
           hero[user2].energy_left -= 2;
-          if (user2Item == 0)
-            items(0);
+          items();
           user2ItemsAttached++;
         }
         else {
@@ -502,19 +520,17 @@ $( document ).ready(function() {
           $('#support-img2').attr("src", support[user2Supp].img);
           $('#support-effect2').html(support[user2Supp].effect);
           hero[user2].energy_left--;
-          if (user2Supp == 0) {
-            hero[user2].hp += 10;
-            $('#hero-hp2').text(hero[user2].hp);
-            msg.append($('<li>').text(hero[user2].name + " now has " + hero[user2].hp + " HP"));
-          }
+          if (user2Supp == 0)
+            if (user2Supp2 == 0)
+              supports(0,true);
           if (user2Supp == 1)
-            extraDmgSupp(1);
+            supports(1);
           user2SuppsSummoned++;
         }
         else if (user2SuppsSummoned == 1){
           do {
             user2Supp2 = randomG(0, supportCount);
-          } while (support[user2Supp].name == support3[user2Supp2].name);
+          } while (support[user2Supp].name == support[user2Supp2].name);
           msg.append($('<li>').text(hero[user2].name + " summoned " + support[user2Supp2].name));
           scroll();
           $('#support2-name2').text(support[user2Supp2].name);
@@ -523,9 +539,8 @@ $( document ).ready(function() {
           $('#support2-effect2').html(support[user2Supp2].effect);
           hero[user2].energy_left--;
           if (user2Supp2 == 0) {
-            hero[user2].hp += 10;
-            $('#hero-hp2').text(hero[user2].hp);
-            msg.append($('<li>').text(hero[user2].name + " now has " + hero[user2].hp + " HP"));
+            if (user2Supp2 == 0)
+              supports(0,true);
           }
           user2SuppsSummoned++;
         }

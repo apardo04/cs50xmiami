@@ -1,5 +1,7 @@
 body {
     background: #3f444a;
+    /*background-image: url("http://jojud265nia2bj9sy4ah9b61.wpengine.netdna-cdn.com/wp-content/uploads/2015/07/The-Sound-of-Music-1600x900-c-default.jpg");
+    background-size: cover;*/
 }
 form { padding: 3px; width: 20%; }
 form input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
@@ -47,6 +49,9 @@ div#turn-menu2 {
     margin-bottom: 11px;
     line-height: 27px;
     cursor: pointer;
+}
+div.menu-row img {
+    width: 8%;
 }
 /* Hero Card CSS */
 div#card-cont {
@@ -153,7 +158,8 @@ div#img-cont img {
   width: 100%;
   margin: 0 auto;
   display:  table;
-  background: #ffffff;
+  /*background: #ffffff;*/
+  background: radial-gradient(124% 100%, white, black);
   border: 2px solid #565656;
   max-width: 210px;
   max-height: 159px;
@@ -173,6 +179,7 @@ div.likes {
     color: #fcfdfe;
     font-size: 19px;
     width: 246px;
+    text-shadow: 0px 5px 10px #000;
 }
 div.hero-energy {
     float: left;
@@ -189,6 +196,9 @@ div#hero-energy2 {
 }
 
 /* Item Card CSS */
+div.item {
+    background: #b1b1b3;
+}
 div.card-name {
   text-align: center;
   font-weight: bold;
@@ -204,6 +214,9 @@ div.card-effect {
 }
 
 /* Support CSS */
+div.support {
+  background: radial-gradient(100% 16%, #5b4c7d, #f3a46c); /*#ffbb67;*/
+}
 div.card-name {
   font-family: comic sans-serif;
 }
