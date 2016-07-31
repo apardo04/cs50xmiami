@@ -1,6 +1,6 @@
 var like = "<img id='like' src='/Users/adrianpardo/Documents/cs50xmiami/MemeWars/img/extras/like.gif'/>";
-var user = 1;
-var user2 = 2;
+var user = 2;
+var user2 = 1;
 var hero = [];
 var item = [];
 var support = [];
@@ -10,10 +10,11 @@ var support3 = [];
 var spongegar = {name: 'SpongeGar', hp: 170, max_hp: 170, armor: 0, img: '/Users/adrianpardo/Documents/cs50xmiami/MemeWars/img/Heroes/spongegar.png', m1: 'React', m1_energy: 1, m1_dmg: 20, m1_effect: 'Flip a coin. If heads, during your opponents next turn, prevent all damage done to spongegar.', m2: 'Savage', m2_energy: 2, m2_dmg: 60, m2_effect: '', energy: 0, energy_left: 0};
 var datboi = {name: 'Dat Boi', hp: 160, max_hp: 160, armor: 0, img: '/Users/adrianpardo/Documents/cs50xmiami/MemeWars/img/Heroes/datboi.png', m1: 'Ohh Shit', m1_energy: 3, m1_dmg: 30, m1_effect: 'Waddup now does +10 more damage(stacks)', m2: 'Waddup', m2_energy: 4, m2_dmg: 60, m2_effect: '', energy: 0, energy_left: 0};
 var pepe = {name: 'Pepe', hp: 120, max_hp: 120, armor: 0, img: '/Users/adrianpardo/Documents/cs50xmiami/MemeWars/img/Heroes/pepe.png', m1: 'Feels Bad Man', m1_energy: 1, m1_dmg: 20, m1_effect: 'Flip a coin. If heads, this attack does +10 damage. <br> Tails, this attack does nothing.', m2: 'Evolve: Final Form Pepe', m2_energy: 4, m2_dmg: 40, m2_effect: '', energy: 0, energy_left: 0};
-var finalFormPepe = {name: 'Final Form Pepe', hp: 170, max_hp: 170, armor: 0, img: '/Users/adrianpardo/Documents/cs50xmiami/MemeWars/img/Heroes/finalFormPepe.png', m1: 'You Fool', m1_energy: 2, m1_dmg: 20, m1_effect: 'Flip a coin. If heads, this attack does +20 damage. <br> Tails, this attack does nothing.', m2: 'True Power', m2_energy: 4, m2_dmg: 60, m2_effect: '', energy: 0, energy_left: 0};
+var finalFormPepe = {name: 'Final Form Pepe', hp: 170, max_hp: 170, armor: 0, img: '/Users/adrianpardo/Documents/cs50xmiami/MemeWars/img/Heroes/finalFormPepe.png', m1: 'You Fool', m1_energy: 2, m1_dmg: 20, m1_effect: 'Flip a coin. If heads, this attack does +20 damage. <br> Tails, this attack does nothing.', m2: 'True Power', m2_energy: 6, m2_dmg: 60, m2_effect: '', energy: 0, energy_left: 0};
 var doge = {name: "Doge", hp: 150, max_hp: 150, armor: 0, img: '/Users/adrianpardo/Documents/cs50xmiami/MemeWars/img/Heroes/doge.png', m1: 'Such Attack', m1_energy: 2, m1_dmg: 30, m1_effect: '', m2: 'So Wow', m2_energy: 4, m2_dmg: 60, m2_effect: 'If "Such Attack" was used last turn<br>"So Wow" does +20 dmg this turn.', energy: 0, energy_left: 0};
 hero[0] = spongegar; hero[1] = datboi; hero[2] = pepe; hero[3] = finalFormPepe; hero[4] = doge;
 function userCardPrint() {
+  $('#move2-cost img').remove();
   $('#hero-name').text(hero[user].name);
   $('#hero-hp').text(hero[user].hp);
   $("#hero-img").attr("src", hero[user].img);
@@ -25,13 +26,7 @@ function userCardPrint() {
   $('#move1-effect').html(hero[user].m1_effect);
   $('#move2-name').text(hero[user].m2);
   for (var i = 0; i < hero[user].m2_energy; i++) {
-    if (user == 2 || user == 3) {
-      $('#move2b-cost').prepend(like);
-      $('#move2-cost').hide();
-    }
-    else {
-      $('#move2-cost').prepend(like);
-    }
+    $('#move2-cost').prepend(like);
   }
   $('#move2-dmg').text(hero[user].m2_dmg);
   $('#move2-effect').html(hero[user].m2_effect);
@@ -42,6 +37,7 @@ function userCardPrint() {
 
 // User2 Hero JS
 function user2CardPrint() {
+  $('#move2-cost2 img').remove();
   $('#hero-name2').text(hero[user2].name);
   $('#hero-hp2').text(hero[user2].hp);
   $("#hero-img2").attr("src", hero[user2].img);
@@ -53,13 +49,7 @@ function user2CardPrint() {
   $('#move1-effect2').html(hero[user2].m1_effect);
   $('#move2-name2').text(hero[user2].m2);
   for (var i = 0; i < hero[user2].m2_energy; i++) {
-    if (user2 == 2 || user2 == 3) {
-      $('#move2b-cost2').prepend(like);
-      $('#move2-cost2').hide();
-    }
-    else {
-      $('#move2-cost2').prepend(like);
-    }
+    $('#move2-cost2').prepend(like);
   }
   $('#move2-dmg2').text(hero[user2].m2_dmg);
   $('#move2-effect2').html(hero[user2].m2_effect);

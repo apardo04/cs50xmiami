@@ -45,9 +45,9 @@ $( document ).ready(function() {
       msg.append($('<li>').text(hero[user2].name + "'s turn"));
       if (hero[user2].energy < 6) {
         hero[user2].energy++;
-        hero[user2].energy_left = hero[user2].energy;
         $('#hero-energy2').append(like);
       }
+      hero[user2].energy_left = hero[user2].energy;
       msg.append($('<li>').text(hero[user2].name + " has " + hero[user2].energy_left + " like's"));
       scroll();
       extraDmg = 0;
@@ -58,9 +58,9 @@ $( document ).ready(function() {
       msg.append($('<li>').text(hero[user].name + "'s turn"));
       if (hero[user].energy < 6) {
         hero[user].energy++;
-        hero[user].energy_left = hero[user].energy;
         $('#hero-energy').append(like);
       }
+      hero[user].energy_left = hero[user].energy;
       msg.append($('<li>').text(hero[user].name + " has " + hero[user].energy_left + " like's"));
       scroll();
       extraDmg = 0;
@@ -107,6 +107,7 @@ $( document ).ready(function() {
       user++;
       hero[user].hp += (hero[user - 1].hp - hero[user - 1].max_hp);
       hero[user].max_hp += (hero[user - 1].hp - hero[user - 1].max_hp);
+      hero[user].armor += hero[user - 1].armor;
       hero[user].energy = hero[user - 1].energy;
       hero[user].energy_left = hero[user - 1].energy_left;
       msg.append($('<li>').text(hero[user - 1].name + " has evolved into " + hero[user].name));
@@ -257,8 +258,8 @@ $( document ).ready(function() {
             supports(1); // Forever Alone
           if (user == 2 || user == 3) // Pepe's 'Feels Bad Man' / Final Form Pepe's 'You Fool'
             extraDmgTurn();
-          msg.append($('<li>').text(hero[user2].name + " took " + (hero[user].m1_dmg + extraDmg) + " damage"));
-          hero[user2].hp -= hero[user].m1_dmg + extraDmg;
+          msg.append($('<li>').text(hero[user2].name + " took " + (hero[user].m1_dmg + extraDmg - hero[user2].armor) + " damage"));
+          hero[user2].hp -= hero[user].m1_dmg + extraDmg - hero[user2].armor;
           $('#hero-hp2').text(hero[user2].hp);
           if (user == 1) // Dat Boi's ohh shit
             datBoi();
@@ -285,8 +286,8 @@ $( document ).ready(function() {
             supports(0);
           if (userSuppsSummoned == 1 && $('#support-name').text() == support[1].name)
             supports(1);
-          msg.append($('<li>').text(hero[user2].name + " took " + (hero[user].m2_dmg + extraDmg) + " damage"));
-          hero[user2].hp -= hero[user].m2_dmg + extraDmg;
+          msg.append($('<li>').text(hero[user2].name + " took " + (hero[user].m2_dmg + extraDmg - hero[user2].armor) + " damage"));
+          hero[user2].hp -= hero[user].m2_dmg + extraDmg - hero[user2].armor;
           $('#hero-hp2').text(hero[user2].hp);
           hero[user].energy_left -= hero[user].m2_energy;
           if (user == 2)
@@ -309,6 +310,7 @@ $( document ).ready(function() {
       if (hero[user].energy_left >= 2) {
         if (userItemsAttached == 0) {
           userItem = randomG(0, itemCount);
+          userItem = 1;
           msg.append($('<li>').text(hero[user].name + " attached " + item[userItem].name));
           scroll();
           $('#item-name').text(item[userItem].name);
@@ -435,8 +437,8 @@ $( document ).ready(function() {
             supports(1);}
           if (user2 == 2 || user2 == 3) // Pepe's 'Feels Bad Man' / Final Form Pepe's 'You Fool'
             extraDmgTurn();
-          msg.append($('<li>').text(hero[user].name + " took " + (hero[user2].m1_dmg + extraDmg) + " damage"));
-          hero[user].hp -= hero[user2].m1_dmg + extraDmg;
+          msg.append($('<li>').text(hero[user].name + " took " + (hero[user2].m1_dmg + extraDmg - hero[user].armor) + " damage"));
+          hero[user].hp -= hero[user2].m1_dmg + extraDmg - hero[user].armor;
           $('#hero-hp').text(hero[user].hp);
           if (user2 == 1) // Dat Boi's ohh shit
             datBoi();
@@ -465,8 +467,8 @@ $( document ).ready(function() {
           if (user2SuppsSummoned == 1 && $('#support-name2').text() == support[1].name){
             console.log("forever alone user2 triggered");
             supports(1);}
-          msg.append($('<li>').text(hero[user].name + " took " + (hero[user2].m2_dmg + extraDmg) + " damage"));
-          hero[user].hp -= hero[user2].m2_dmg + extraDmg;
+          msg.append($('<li>').text(hero[user].name + " took " + (hero[user2].m2_dmg + extraDmg - hero[user].armor) + " damage"));
+          hero[user].hp -= hero[user2].m2_dmg + extraDmg - hero[user].armor;
           $('#hero-hp').text(hero[user].hp);
           hero[user2].energy_left -= hero[user2].m2_energy;
           if (user2 == 2)
@@ -489,6 +491,7 @@ $( document ).ready(function() {
       if (hero[user2].energy_left >= 2) {
         if (user2ItemsAttached == 0) {
           user2Item = randomG(0, itemCount);
+          user2Item = 1;
           console.log("user2 item = " + user2Item);
           msg.append($('<li>').text(hero[user2].name + " attached " + item[user2Item].name));
           scroll();
