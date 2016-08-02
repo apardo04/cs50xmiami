@@ -36,7 +36,7 @@ div.turn-menu {
     /*margin-top: 130px;*/
 }
 div#turn-menu2 {
-    bottom: -83px;
+    bottom: -91px;
     position: relative;
 }
 .menu-row {
@@ -52,6 +52,10 @@ div#turn-menu2 {
 }
 div.menu-row img {
     width: 8%;
+}
+.disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
 }
 /* Hero Card CSS */
 div#card-cont {
@@ -185,7 +189,7 @@ div.hero-energy {
     float: left;
 }
 div.hero-energy img {
-    max-width: 23px;
+    max-width: 22px;
     padding-left: 10px;
     margin-top: 0px;
 }

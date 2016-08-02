@@ -13,8 +13,9 @@ $( document ).ready(function() {
   var user2SuppsSummoned = 0;
   var user2SuppDmg = 0;
   var userTurn; // true: user1's turn, false: user2
-  var attacked = false; // False: Hasn't attacked this turn
   var extraDmg = 0; // Exrta damage for current turn
+  var damage = 0; // Damage being done this turn
+  var attacked = false; // False: Hasn't attacked this turn
   var tempUser; // Makes user variable dynamic
   var idNum; // Makes id # dynamic
   var tempItem // Makes userItem dynamic
@@ -42,6 +43,8 @@ $( document ).ready(function() {
   }
   function endTurn() {
     if (userTurn) {
+      $('div#turn-menu1').addClass('disabled');
+      $('div#turn-menu2').removeClass('disabled');
       msg.append($('<li>').text(hero[user2].name + "'s turn"));
       if (hero[user2].energy < 6) {
         hero[user2].energy++;
@@ -55,6 +58,8 @@ $( document ).ready(function() {
       userTurn = false;
     }
     else {
+      $('div#turn-menu2').addClass('disabled');
+      $('div#turn-menu1').removeClass('disabled');
       msg.append($('<li>').text(hero[user].name + "'s turn"));
       if (hero[user].energy < 6) {
         hero[user].energy++;
@@ -69,27 +74,26 @@ $( document ).ready(function() {
     }
   }
   function turnCheck() {
-    if (userTurn) {
-      if (hero[user2].hp <= 0) {
-        $('#hero-hp2').text("0");
-        msg.append($('<li>').text(hero[user].name + " Wins!"));
-        alert(hero[user].name + " Wins!");
-        //insert sound of silence
-      }
+    tempUserCheck();
+    if (hero[tempOpp].hp <= 0 && hero[tempUser].hp <= 0) {
+      $('#hero-hp' + idNum).text("0");
+      $('#hero-hp' + idOppNum).text("0");
+      msg.append($('<li>').text("It's a draw! For now.."));
+      // Tie breaker rules come into play
     }
-    else {
-      if (hero[user].hp <= 0) {
-        $('#hero-hp').text("0");
-        msg.append($('<li>').text(hero[user2].name + " Wins!"));
-        alert(hero[user2].name + " Wins!");
-        //insert sound of silence
-      }
+    else if (hero[tempOpp].hp <= 0) {
+      $('#hero-hp' + idOppNum).text("0");
+      msg.append($('<li>').text(hero[tempUser].name + " Wins!"));
+      var sound = new Howl({
+        src: ['/Users/adrianpardo/Documents/cs50xmiami/MemeWars/audio/soundOfSilence.mp3'],
+        volume: 0.3
+      });
+      sound.play();
+      //alert(hero[tempUser].name + " Wins!");
     }
   }
   function extraDmgTurn() {
       if (coinFlip()) {
-        if (user == 2 || user2 == 2) // Pepe
-          extraDmg += 10;
         if (user == 3 || user2 == 3) // Final Form Pepe
           extraDmg += 20;
         msg.append($('<li>').text("Coin flip result: Heads"));
@@ -171,7 +175,17 @@ $( document ).ready(function() {
           hero[tempOpp].energy--;
           $('#hero-energy' + idOppNum + ' img:last-child').remove()
         }
+        break;
+      case 2:
+        hero[tempUser].armor += 20;
+        break;
     }
+  }
+  function confusion() {
+    tempUserCheck();
+    hero[tempUser].hp -= 10;
+    msg.append($('<li>').text(hero[tempUser].name + " took 10 damage out of confusion."));
+    $('#hero-hp' + idNum).text(hero[tempUser].hp);
   }
   function supports(supp, summoned) {
     var tempUser = (userTurn) ? user : user2;
@@ -214,11 +228,13 @@ $( document ).ready(function() {
       hero[user2].hp -= 30;
       msg.append($('<li>').text(hero[user2].name + " took 30 damage"));
       $('#hero-hp2').text(hero[user2].hp);
+      turnCheck();
     }
     else {
       hero[user].hp -= 30;
       msg.append($('<li>').text(hero[user].name + " took 30 damage"));
       $('#hero-hp').text(hero[user].hp);
+      turnCheck();
     }
   }
 
@@ -229,6 +245,7 @@ $( document ).ready(function() {
   msg.append($('<li>').text(hero[user].name + " is Heads."));
   msg.append($('<li>').text(hero[user2].name + " is Tails."));
   if (coinFlip()) {
+    $('div#turn-menu2').addClass('disabled');
     msg.append($('<li>').text("Coin flip result: Heads"));
     msg.append($('<li>').text(hero[user].name + " will go first"));
     hero[user].energy++;
@@ -238,6 +255,7 @@ $( document ).ready(function() {
     userTurn = true;
   }
   else {
+    $('div#turn-menu1').addClass('disabled');
     msg.append($('<li>').text("Coin flip result: Tails"));
     msg.append($('<li>').text(hero[user2].name + " will go first"));
     hero[user2].energy++;
@@ -258,11 +276,14 @@ $( document ).ready(function() {
             supports(1); // Forever Alone
           if (user == 2 || user == 3) // Pepe's 'Feels Bad Man' / Final Form Pepe's 'You Fool'
             extraDmgTurn();
-          msg.append($('<li>').text(hero[user2].name + " took " + (hero[user].m1_dmg + extraDmg - hero[user2].armor) + " damage"));
-          hero[user2].hp -= hero[user].m1_dmg + extraDmg - hero[user2].armor;
+          damage = ((hero[user].m1_dmg + extraDmg - hero[user2].armor) < 0) ? 0 : (hero[user].m1_dmg + extraDmg - hero[user2].armor);
+          msg.append($('<li>').text(hero[user2].name + " took " + damage + " damage"));
+          hero[user2].hp -= damage;
           $('#hero-hp2').text(hero[user2].hp);
           if (user == 1) // Dat Boi's ohh shit
             datBoi();
+          if (user2Item == 3)
+            confusion();
           hero[user].energy_left -= hero[user].m1_energy;
           scroll();
           attacked = true;
@@ -287,11 +308,13 @@ $( document ).ready(function() {
           if (userSuppsSummoned == 1 && $('#support-name').text() == support[1].name)
             supports(1);
           msg.append($('<li>').text(hero[user2].name + " took " + (hero[user].m2_dmg + extraDmg - hero[user2].armor) + " damage"));
-          hero[user2].hp -= hero[user].m2_dmg + extraDmg - hero[user2].armor;
+          hero[user2].hp -= ((hero[user].m2_dmg + extraDmg - hero[user2].armor) > 0) ? (hero[user].m2_dmg + extraDmg - hero[user2].armor) : 0;
           $('#hero-hp2').text(hero[user2].hp);
           hero[user].energy_left -= hero[user].m2_energy;
           if (user == 2)
             evolve();
+          if (user2Item == 3)
+            confusion();
           scroll();
           attacked = true;
           turnCheck();
@@ -310,7 +333,7 @@ $( document ).ready(function() {
       if (hero[user].energy_left >= 2) {
         if (userItemsAttached == 0) {
           userItem = randomG(0, itemCount);
-          userItem = 1;
+          //userItem = 2;
           msg.append($('<li>').text(hero[user].name + " attached " + item[userItem].name));
           scroll();
           $('#item-name').text(item[userItem].name);
@@ -378,6 +401,7 @@ $( document ).ready(function() {
       if (hero[user].energy_left >= 3) {
         if (userSuppsSummoned == 0) {
           userSupp = randomG(0, support3Count);
+          userSupp = 0;
           msg.append($('<li>').text(hero[user].name + " summoned " + support3[userSupp].name));
           scroll();
           $('#support-name').text(support3[userSupp].name);
@@ -437,11 +461,14 @@ $( document ).ready(function() {
             supports(1);}
           if (user2 == 2 || user2 == 3) // Pepe's 'Feels Bad Man' / Final Form Pepe's 'You Fool'
             extraDmgTurn();
-          msg.append($('<li>').text(hero[user].name + " took " + (hero[user2].m1_dmg + extraDmg - hero[user].armor) + " damage"));
-          hero[user].hp -= hero[user2].m1_dmg + extraDmg - hero[user].armor;
+          damage = ((hero[user2].m1_dmg + extraDmg - hero[user].armor) < 0) ? 0 : (hero[user2].m1_dmg + extraDmg - hero[user].armor);
+          msg.append($('<li>').text(hero[user].name + " took " + damage + " damage"));
+          hero[user].hp -= damage;
           $('#hero-hp').text(hero[user].hp);
           if (user2 == 1) // Dat Boi's ohh shit
             datBoi();
+          if (userItem == 3)
+            confusion();
           hero[user2].energy_left -= hero[user2].m1_energy;
           scroll();
           attacked = true;
@@ -473,6 +500,8 @@ $( document ).ready(function() {
           hero[user2].energy_left -= hero[user2].m2_energy;
           if (user2 == 2)
             evolve();
+          if (userItem == 3)
+            confusion();
           scroll();
           attacked = true;
           turnCheck();
@@ -491,7 +520,7 @@ $( document ).ready(function() {
       if (hero[user2].energy_left >= 2) {
         if (user2ItemsAttached == 0) {
           user2Item = randomG(0, itemCount);
-          user2Item = 1;
+          //user2Item = 3;
           console.log("user2 item = " + user2Item);
           msg.append($('<li>').text(hero[user2].name + " attached " + item[user2Item].name));
           scroll();
