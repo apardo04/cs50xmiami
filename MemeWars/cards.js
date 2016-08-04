@@ -12,7 +12,8 @@ var datboi = {name: 'Dat Boi', hp: 160, max_hp: 160, armor: 0, img: '/Users/adri
 var pepe = {name: 'Pepe', hp: 120, max_hp: 120, armor: 0, img: '/Users/adrianpardo/Documents/cs50xmiami/MemeWars/img/Heroes/pepe.png', m1: 'Feels Bad Man', m1_energy: 1, m1_dmg: 30, m1_effect: 'Flip a coin. If Tails, this attack does nothing.', m2: 'Evolve: Final Form Pepe', m2_energy: 4, m2_dmg: 40, m2_effect: '', energy: 0, energy_left: 0};
 var finalFormPepe = {name: 'Final Form Pepe', hp: 170, max_hp: 170, armor: 0, img: '/Users/adrianpardo/Documents/cs50xmiami/MemeWars/img/Heroes/finalFormPepe.png', m1: 'You Fool', m1_energy: 2, m1_dmg: 20, m1_effect: 'Flip a coin. If heads, this attack does +20 damage. <br> Tails, this attack does nothing.', m2: 'True Power', m2_energy: 6, m2_dmg: 60, m2_effect: '', energy: 0, energy_left: 0};
 var doge = {name: "Doge", hp: 150, max_hp: 150, armor: 0, img: '/Users/adrianpardo/Documents/cs50xmiami/MemeWars/img/Heroes/doge.png', m1: 'Such Attack', m1_energy: 2, m1_dmg: 30, m1_effect: '', m2: 'So Wow', m2_energy: 4, m2_dmg: 60, m2_effect: 'If "Such Attack" was used last turn<br>"So Wow" does +20 dmg this turn.', energy: 0, energy_left: 0};
-hero[0] = spongegar; hero[1] = datboi; hero[2] = pepe; hero[3] = finalFormPepe; hero[4] = doge;
+var harambe = {name: 'Harambe', hp: 200, max_hp: 200, armor: 0, img: '/Users/adrianpardo/Documents/cs50xmiami/MemeWars/img/Heroes/harambe2.jpg', m1: 'Drag', m1_energy: 2, m1_dmg: 20, m1_effect: '', m2: 'Dicks out for Harambe', m2_energy: 4, m2_dmg: 50, m2_effect: '', energy: 0, energy_left: 0};
+hero[0] = spongegar; hero[1] = datboi; hero[2] = pepe; hero[3] = finalFormPepe; hero[4] = doge; hero[5] = harambe;
 function userCardPrint() {
   $('#move2-cost img').remove();
   $('#hero-name').text(hero[user].name);
@@ -60,7 +61,7 @@ function user2CardPrint() {
 
 // -------- Item JS -------- //
 var dealWithIt = {name: 'Deal With It', img: '/Users/adrianpardo/Documents/cs50xmiami/MemeWars/img/Items/dealWithIt.png', effect: 'Heal +20 HP <br> +1 Like'};
-var scumBagSteveHat = {name: 'Scumbag Steve Hat', img: '/Users/adrianpardo/Documents/cs50xmiami/MemeWars/img/Items/ScumBagSteveHat.png', effect: 'Opponent losses 1 Like <br> Attached: +10 armor'};
+var scumBagSteveHat = {name: 'Scumbag Steve Hat', img: '/Users/adrianpardo/Documents/cs50xmiami/MemeWars/img/Items/ScumBagSteveHat.png', effect: 'Opponent loses 1 Like <br> Attached: +10 armor'};
 var nokia = {name: "Nokia Phone", img: '/Users/adrianpardo/Documents/cs50xmiami/MemeWars/img/Items/nokia.png', effect: '+20 Armor'}
 var horseHead = {name: "Horse Head", img: '/Users/adrianpardo/Documents/cs50xmiami/MemeWars/img/Items/horseMask.png', effect: "When your opponent attacks,<br> they take 10 damage <br> out of confusion."}
 item[0] = dealWithIt; item[1] = scumBagSteveHat; item[2] = nokia; item[3] = horseHead;

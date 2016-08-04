@@ -1,0 +1,2 @@
+(function(){var provide=function(string){var parts=string.split('.');var first=parts.shift();if(!(first in this)){this[first]={};}
+if(parts.length>0){string=parts.join('.');arguments.callee.call(this[first],string);}};provide('dot');dot.provide=provide.bind(this);})();
